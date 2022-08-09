@@ -40,6 +40,7 @@
                 ?>
 
                 <?php $jml_seluruh_iuran += $total_iuran_peserta;
+                    echo 'halloooo';
                 endforeach; ?>
             </tbody>
 
