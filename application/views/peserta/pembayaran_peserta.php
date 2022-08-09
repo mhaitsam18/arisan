@@ -54,7 +54,7 @@
                                             <div class="form-group row justify-content-end">
 
                                                 <div class="col-sm-9">
-                                                    <button type="submit" class="btn btn-success btn-sm btn-user btn-block"">Submit</button>
+                                                    <button type="submit" class="btn btn-success btn-sm btn-user btn-block">Submit</button>
                                                 </div>
                                             </div>
                                         </form>
@@ -71,8 +71,8 @@
         const tanggal = document.querySelector('#tanggal');
         const nominal = document.querySelector('#nominal');
         tanggal.addEventListener('change', function() {
-        fetch('<?= base_url('Peserta/checkNominal?tanggal=') ?>' + tanggal.value + '&id_peserta=<?= $this->session->userdata('id') ?>')
-        .then(response => response.json())
-        .then(data => nominal.value = data.nominal);
+            fetch('<?= base_url('Peserta/checkNominal?tanggal=') ?>' + tanggal.value + '&id_peserta=<?= $this->session->userdata('id') ?>')
+                .then(response => response.json())
+                .then(data => nominal.value = data.nominal);
         });
     </script>

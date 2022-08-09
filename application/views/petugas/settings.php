@@ -123,24 +123,63 @@
                                             </div>
                                             <div class="form-group row justify-content-end">
                                                 <div class="col-sm-9">
-                                                    <button type="submit" class="btn btn-success btn-sm btn-user btn-block"">Simpan</button>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </form>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                    </div>
+                                                    <button type="submit" class="btn btn-success btn-sm btn-user btn-block">Simpan</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
 
     <script>
         function lihat_password1() {
-                var a = document.getElementById('current_password');
-                var b = document.getElementById('lihat1');
-                var c = document.getElementById('tutup1');
-                if (a.type === 'password') {
-                 a.type = " text"; b.style.display="block" ; c.style.display="none" ; } else { a.type="password" ; b.style.display="none" ; c.style.display="block" ; } } function lihat_password2() { var d=document.getElementById('new_password1'); var e=document.getElementById('lihat2'); var f=document.getElementById('tutup2'); if (d.type==='password' ) { d.type=" text" ; e.style.display="block" ; f.style.display="none" ; } else { d.type="password" ; e.style.display="none" ; f.style.display="block" ; } } function lihat_password3() { var g=document.getElementById('new_password2'); var h=document.getElementById('lihat3'); var i=document.getElementById('tutup3'); if (g.type==='password' ) { g.type=" text" ; h.style.display="block" ; i.style.display="none" ; } else { g.type="password" ; h.style.display="none" ; i.style.display="block" ; } } </script>
+            var a = document.getElementById('current_password');
+            var b = document.getElementById('lihat1');
+            var c = document.getElementById('tutup1');
+            if (a.type === 'password') {
+                a.type = " text";
+                b.style.display = "block";
+                c.style.display = "none";
+            } else {
+                a.type = "password";
+                b.style.display = "none";
+                c.style.display = "block";
+            }
+        }
+
+        function lihat_password2() {
+            var d = document.getElementById('new_password1');
+            var e = document.getElementById('lihat2');
+            var f = document.getElementById('tutup2');
+            if (d.type === 'password') {
+                d.type = " text";
+                e.style.display = "block";
+                f.style.display = "none";
+            } else {
+                d.type = "password";
+                e.style.display = "none";
+                f.style.display = "block";
+            }
+        }
+
+        function lihat_password3() {
+            var g = document.getElementById('new_password2');
+            var h = document.getElementById('lihat3');
+            var i = document.getElementById('tutup3');
+            if (g.type === 'password') {
+                g.type = " text";
+                h.style.display = "block";
+                i.style.display = "none";
+            } else {
+                g.type = "password";
+                h.style.display = "none";
+                i.style.display = "block";
+            }
+        }
+    </script>
