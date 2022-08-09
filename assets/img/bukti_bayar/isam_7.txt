@@ -1,0 +1,29 @@
+Penyelenggara:
+
+- halaman penyelenggara tabel data barang harga beli dan total dihapus SUDAH 40
+
+- petugas data peserta diganti jadi jumlah peserta SUDAH 90k
+->imbas "Harus menambah FK pada tabel petugas" SUDAH 20k
+- penyelenggara bisa lihat barang apa saja yang dipilih dan progress pembayaran SUDAH  (2 halaman) 220k
+
+- halaman baru untuk jumlah barang yang dipilih + fitur input barang terpenuhi SUDAH  (2 fitur) 240k
+
+- Dashboard (SKIP DULU)
+
+- Input tanggal mulai Arisan dan tanggal akhir di dashboard sebagai View, di setting sebagai edit, di profile sebagai view, dan perbarui database 150k
+
+Petugas:
+
+- data peserta bisa lihat peserta tersebut pilih barang apa saja + progress pembayaran. SUDAH 230k (2 halaman)
+- pembayaran offline terisi otomatis nominalnya ada field tanggal awal dan tanggal akhir 125k
+- pembyaran offline opsi nama peserta yang petugasnya adalah petugas yang sedang login 100k
++status pembayaran peserta 100;
+
+Peserta: 
+
+- setelah login, kalau gaada barang yang dipilih ga bisa masuk dashboard, harus pilih barang dulu minimal, terus tambah tabungan. 170k
++ di auth/pilihbarang tambah kolom jumlah pada tiap-tiap field nya 170k
+- halaman registrasi peserta dihapus 10k
+- ga bisa pilih tanggal kalau tanggal tersebut sudah setoran  180k
+- ada sisa bayar dari total barang 135k
+- progress peserta, tampilin langsung jangka waktu nya sampai berapa hari. Jika lebih dari 1 bulan berarrti digroup berdasarkan bulan 180k
