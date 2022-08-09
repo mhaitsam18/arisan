@@ -40,14 +40,9 @@
                 ?>
 
                 <?php $jml_seluruh_iuran += $total_iuran_peserta;
-                    echo 'halloooo';
-                    echo 'halloooo3';
-                    echo 'halloooo4';
-                    echo 'aku melakukan perubahan';
                 endforeach; ?>
             </tbody>
-            <h2>Halloo</h2>
-            <h2>idham melakukan perbuahan</h2>
+
             <div class="row">
                 <div class="col-xl-3 col-md-6">
                     <div class="card border-info mb-3" style="max-width: 18rem;">

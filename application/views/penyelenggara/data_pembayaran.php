@@ -71,7 +71,6 @@ function getBulan($bln)
                                     <th>Tanggal</th>
                                     <th>Nominal</th>
                                     <th>Bukti</th>
-                                    <th>Bukti 2</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
