@@ -81,7 +81,6 @@ function getBulan($bln)
                                     $jml = 0;
                                     foreach ($proses as $row) :
                                         $count = $count + 1;
-
                                     ?>
                                         <tr>
                                             <th scope=" row"><?= $count ?></th>

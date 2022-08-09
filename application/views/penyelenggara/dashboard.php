@@ -1,3 +1,11 @@
+<style type="text/css">
+    .chart {
+        width: 50%;
+        height: 50%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+</style>
 <div id="layoutSidenav_content">
     <main>
         <div class="container-fluid px-4">
@@ -115,7 +123,18 @@
                     </div>
                 </div>
             </div>
-        </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card border-info mb-3">
+                        <div class="card-header">Speed Chart</div>
+                        <div class="card-body">
+                            <div class="chart">
+                                <canvas id="canvas"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
     </main>
 
     <div class="modal fade" id="tanggal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -149,3 +168,27 @@
             </div>
         </div>
     </div>
+
+    <?php $angka = $jml;
+    $max = $jml_seluruh_iuran; ?>
+    <script type="text/javascript">
+        var ctx = document.getElementById("canvas").getContext("2d");
+        new Chart(ctx, {
+            type: "tsgauge",
+            data: {
+                datasets: [{
+                    backgroundColor: ['#ff0000', '#ffff00', '#008000'],
+                    borderWidth: 0,
+                    gaugeData: {
+                        value: <?php echo $angka; ?>,
+                        valueColor: "#ff7143"
+                    },
+                    gaugeLimits: [0, 5000000, 10000000, <?= $max; ?>]
+                }]
+            },
+            options: {
+                events: [],
+                showMarkers: true
+            }
+        });
+    </script>
