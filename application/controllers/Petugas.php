@@ -43,7 +43,10 @@ class Petugas extends CI_Controller
         $this->db->join('pembayaran', 'user.id = pembayaran.id_user', 'left');
         $this->db->order_by('created_at', 'desc');
         $this->db->group_by('user.id');
-        $data['rows'] = $this->db->get_where('user', ['id_petugas' => $this->session->userdata('id')])->result();
+        $data['rows'] = $this->db->get_where('user', [
+            'id_petugas' => $this->session->userdata('id'),
+            'pembayaran.status !=' => 'cancel',
+        ])->result();
         // $data['rows'] = $this->M_Petugas->getDataPeserta()->result();
         $data['penyelenggara'] = $this->db->get('penyelenggara')->row();
 
@@ -398,6 +401,7 @@ class Petugas extends CI_Controller
         $jml_bayar = 0;
         $total = 0;
 
+        $this->db->order_by('tanggal', 'DESC');
         $pembayaran = $this->db->get_where('pembayaran', ['id_user' => $this->input->get('id_peserta')])->row();
 
         $user = $this->db->get_where('petugas', ['username' => $this->session->userdata('username')])->row_array();
@@ -405,7 +409,8 @@ class Petugas extends CI_Controller
         $penyelenggara = $this->db->get_where('penyelenggara', ['id' => $user['id_penyelenggara']])->row();
 
         if ($pembayaran) {
-            $tanggal_minimal = date('Y-m-d', strtotime('+1 days', strtotime($pembayaran->tanggal)));
+            // $tanggal_minimal = date('Y-m-d', strtotime('+1 days', strtotime($pembayaran->tanggal)));
+            $tanggal_minimal = $pembayaran->tanggal;
         } else {
             $tanggal_minimal = $penyelenggara->tanggal_mulai;
         }

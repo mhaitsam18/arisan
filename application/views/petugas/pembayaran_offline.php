@@ -17,7 +17,7 @@
                                             <div class="row mb-3">
                                                 <label for="id_peserta" class="col-sm-3 col-form-label">Nama Peserta</label>
                                                 <div class="col-sm-9">
-                                                    <select name="id_peserta" id="id_peserta" class="form-control">
+                                                    <select name="id_peserta" id="id_peserta" class="form-control id_peserta">
                                                         <option value="">--pilih--</option>
                                                         <?php foreach ($peserta as $p) : ?>
                                                             <option value="<?= $p->id ?>"><?= strtolower($p->nama_lengkap) ?></option>
@@ -56,7 +56,7 @@
             </div>
         </div>
     </main>
-    <script src=" https://code.jquery.com/jquery-3.6.0.min.js" type=""></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" type=""></script>
     <script type="text/javascript">
         const id_peserta = document.querySelector('#id_peserta');
         const nominal = document.querySelector('#nominal');

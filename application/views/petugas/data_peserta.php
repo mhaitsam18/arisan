@@ -32,11 +32,14 @@
                                 <?php
                                 $jml = 0;
                                 $count = 0;
-                                foreach ($rows as $row) :
+                                ?>
+                                <?php foreach ($rows as $row) : ?>
+                                    <?php
                                     $count = $count + 1;
                                     $this->db->select('SUM(harga) AS harga_total');
                                     $this->db->join('barang', 'target_barang.id_barang = barang.id');
                                     $barang = $this->db->get_where('target_barang', ['id_user' => $row->id])->row();
+
                                     $jml_barang = $this->db->get_where('target_barang', ['id_user' => $row->id])->num_rows();
 
                                     $tanggal_mulai = date('Y-m-d', strtotime('-1 days', strtotime($penyelenggara->tanggal_mulai)));
@@ -48,12 +51,8 @@
                                     $total_tabungan = $row->tabungan * $jml_hari;
                                     $total_iuran_peserta = $total_harga_barang + $total_tabungan;
                                     $sisa = $total_iuran_peserta - $row->total_bayar;
-                                ?>
-                                    <?php if ($row->status == 'nonaktif') : ?>
-                                        <tr style="background-color: #fa8e8e;">
-                                        <?php else : ?>
-                                        <tr>
-                                        <?php endif; ?>
+                                    ?>
+                                    <tr style="<?= ($row->status == 'nonaktif') ? 'background-color: #fa8e8e;' : '' ?>">
                                         <th scope=" row"><?= $count ?></th>
                                         <td><?= $row->nama_lengkap ?></td>
                                         <td><?= $row->alamat ?></td>
@@ -87,8 +86,8 @@
                                                 </button>
                                             <?php endif; ?>
                                         </td>
-                                        </tr>
-                                    <?php endforeach; ?>
+                                    </tr>
+                                <?php endforeach; ?>
                             </tbody>
                         </table>
                     </div>
