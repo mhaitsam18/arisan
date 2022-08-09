@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 27, 2022 at 02:33 PM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 7.4.29
+-- Generation Time: Aug 09, 2022 at 12:14 PM
+-- Server version: 10.4.21-MariaDB
+-- PHP Version: 8.0.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -384,7 +384,8 @@ INSERT INTO `pembayaran` (`id`, `id_user`, `nama_lengkap`, `tanggal`, `nominal`,
 (330, 115, 'Melan', '2022-07-20', '5450.00', 'buktibayar21.jpeg', 'sukses'),
 (331, 115, 'Melan', '2022-07-21', '5450.00', 'buktibayar22.jpeg', 'sukses'),
 (335, 105, 'Sanirah', '2022-07-20', '12000.00', 'logo2.jpg', 'cancel'),
-(336, 119, 'idham', '2022-05-16', '2800.00', 'logo4.jpg', 'cancel');
+(336, 119, 'idham', '2022-05-16', '2800.00', 'logo4.jpg', 'cancel'),
+(337, 105, 'Sanirah', '2022-07-19', '6000.00', 'bukti17.jpg', 'sukses');
 
 -- --------------------------------------------------------
 
@@ -657,7 +658,7 @@ ALTER TABLE `barang`
 -- AUTO_INCREMENT for table `pembayaran`
 --
 ALTER TABLE `pembayaran`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=337;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=338;
 
 --
 -- AUTO_INCREMENT for table `pembayaran_bulanan`
