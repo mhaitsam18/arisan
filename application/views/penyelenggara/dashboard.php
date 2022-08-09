@@ -41,6 +41,8 @@
 
                 <?php $jml_seluruh_iuran += $total_iuran_peserta;
                     echo 'halloooo';
+                    echo 'halloooo3';
+                    echo 'halloooo4';
                 endforeach; ?>
             </tbody>
 
