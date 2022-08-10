@@ -61,9 +61,9 @@
                                                 <?php if ($sisa <= 0) : ?>
                                                     Sudah Lunas (
                                                 <?php else : ?>
-                                                    Belum Lunas (
+                                                    Belum Lunas (Rp.
                                                 <?php endif ?>
-                                                <?= number_format($sisa) ?>
+                                                <?= number_format($sisa, 0, ',', '.') ?>
                                                 )
                                             <?php else : ?>
                                                 Belum memilih barang

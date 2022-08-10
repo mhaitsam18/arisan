@@ -131,17 +131,19 @@ class Penyelenggara extends CI_Controller
     {
         $data['title'] = 'Data Peserta';
         $data['user'] = $this->db->get_where('penyelenggara', ['username' => $this->session->userdata('username')])->row_array();
-        $data['rows'] = $this->M_Penyelenggara->dataPeserta()->result();
+        // $data['rows'] = $this->M_Penyelenggara->dataPeserta()->result();
 
-        // $this->db->select('user.*, SUM(pembayaran.nominal) AS total_bayar');
-        // $this->db->from('user');
-        // $this->db->join('pembayaran', 'user.id = pembayaran.id_user', 'left');
-        // $this->db->order_by('created_at', 'desc');
-        // $this->db->group_by('user.id');
-        // $data['rows'] = $this->db->get_where('user', ['id_petugas' => $this->session->userdata('id')])->result();
-        // $data['rows'] = $this->db->get('user');
+        $this->db->select('user.*, SUM(pembayaran.nominal) AS total_bayar');
+        // $this->db->join('target_barang', 'user.id = target_barang.id_user', 'left');
+        // $this->db->join('barang', 'barang.id = target_barang.id_barang', 'left');
+        $this->db->join('pembayaran', 'user.id = pembayaran.id_user', 'left');
+        $this->db->order_by('created_at', 'desc');
+        $this->db->group_by('user.id');
+        $data['rows'] = $this->db->get_where('user', [
+            'pembayaran.status !=' => 'cancel'
+        ])->result();
 
-        $data['rows'] = $this->M_Penyelenggara->getTotalBayarPeserta()->result();
+        // $data['rows'] = $this->M_Penyelenggara->getTotalBayarPeserta()->result();
         $data['penyelenggara'] = $this->db->get('penyelenggara')->row();
 
         $this->load->view('templates/header', $data);

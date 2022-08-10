@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 09, 2022 at 12:14 PM
--- Server version: 10.4.21-MariaDB
--- PHP Version: 8.0.12
+-- Generation Time: Aug 10, 2022 at 03:14 PM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 7.4.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -385,7 +385,7 @@ INSERT INTO `pembayaran` (`id`, `id_user`, `nama_lengkap`, `tanggal`, `nominal`,
 (331, 115, 'Melan', '2022-07-21', '5450.00', 'buktibayar22.jpeg', 'sukses'),
 (335, 105, 'Sanirah', '2022-07-20', '12000.00', 'logo2.jpg', 'cancel'),
 (336, 119, 'idham', '2022-05-16', '2800.00', 'logo4.jpg', 'cancel'),
-(337, 105, 'Sanirah', '2022-07-19', '6000.00', 'bukti17.jpg', 'sukses');
+(337, 105, 'Sanirah', '2022-07-19', '6000.00', 'Beige_Mood_Board_Photo_Collage.png', 'cancel');
 
 -- --------------------------------------------------------
 
@@ -408,7 +408,8 @@ CREATE TABLE `pembayaran_bulanan` (
 --
 
 INSERT INTO `pembayaran_bulanan` (`id`, `id_petugas`, `nama_lengkap`, `tanggal`, `nominal`, `bukti`, `status`) VALUES
-(36, 18, 'Kokom', '2022-07-20', 300000, 'bukti15.jpg', 'sukses');
+(36, 18, 'Kokom', '2022-07-20', 300000, 'bukti15.jpg', 'sukses'),
+(41, 18, 'Kokom', '2022-06-15', 1135000, 'Sertif_VSGA4.jpg', 'sukses');
 
 -- --------------------------------------------------------
 
@@ -596,7 +597,9 @@ INSERT INTO `user` (`id`, `nama_lengkap`, `alamat`, `no_hp`, `username`, `image`
 (114, 'Nina', 'Jl. Rawa Bebek RT02/01 No.29', '6282284284815', 'Nina', 'default.png', '$2y$10$cp9/fmlrl8gLBUJ9P7sPDOtT/hTPEhSwEESaBo7MP0HpByubAC.Pm', 'aktif', '3300', 'Kokom', 18, '2022-07-19 20:30:32'),
 (115, 'Melan', 'Jl. Penggilingan No.78', '6282284284815', 'Melan', 'default.png', '$2y$10$E6u3Dq5/.Wdr2bjz/4QBC.TYTdsBryfOMNSfWdzpqJrfP47W/PyGq', 'aktif', NULL, 'Surnani', 29, '2022-07-20 21:30:12'),
 (117, 'coba', 'kuningan', '6282284284815', 'coba', 'default.png', '$2y$10$wXTCXWS2Cp4n7tT0O8kLDe36GPCln7q1cpHQdBYCeLyrR.rjy2J3m', 'aktif', '1000', 'Kokom', 18, '2022-07-25 18:30:34'),
-(119, 'idham', 'jakarta', '6285603306', 'idham', 'default.png', '$2y$10$lyEJ0nvRrozKr4/lVFyI8.drDawQXYeF5McAIzVswiC8tZ.mjbxuO', 'aktif', NULL, 'Kokom', 18, '2022-07-26 17:03:27');
+(119, 'idham', 'jakarta', '6285603306', 'idham', 'default.png', '$2y$10$lyEJ0nvRrozKr4/lVFyI8.drDawQXYeF5McAIzVswiC8tZ.mjbxuO', 'aktif', NULL, 'Kokom', 18, '2022-07-26 17:03:27'),
+(121, 'coba', 'coba', '085603306568', 'coba', 'default.png', '$2y$10$LzQFNnpy5eGx.pyZ7r8QDueDyFlT.ppJuXVylyRA3qnZQa11OkD8C', 'aktif', NULL, 'Kokom', 18, '2022-07-29 00:45:35'),
+(122, 'coba', 'coba', '6282123405037', 'coba', 'default.png', '$2y$10$MRUcTkoaIc18sQNbUJU6be8KsURHD0QMi8eXynH9vZkB.7J63z66u', 'aktif', NULL, 'Kokom', 18, '2022-07-29 00:52:15');
 
 --
 -- Indexes for dumped tables
@@ -664,7 +667,7 @@ ALTER TABLE `pembayaran`
 -- AUTO_INCREMENT for table `pembayaran_bulanan`
 --
 ALTER TABLE `pembayaran_bulanan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT for table `penyelenggara`
@@ -688,7 +691,7 @@ ALTER TABLE `target_barang`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=121;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=123;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
