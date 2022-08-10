@@ -180,7 +180,7 @@
                     backgroundColor: ['#ff0000', '#ffff00', '#008000'],
                     borderWidth: 0,
                     gaugeData: {
-                        value: <?php echo $angka; ?>,
+                        value: <?= $angka; ?>,
                         valueColor: "#ff7143"
                     },
                     gaugeLimits: [0, 5000000, 10000000, <?= $max; ?>]
