@@ -45,7 +45,7 @@ class Petugas extends CI_Controller
         $this->db->group_by('user.id');
         $data['rows'] = $this->db->get_where('user', [
             'id_petugas' => $this->session->userdata('id'),
-            'pembayaran.status !=' => 'cancel',
+            // 'pembayaran.status !=' => 'cancel'
         ])->result();
         // $data['rows'] = $this->M_Petugas->getDataPeserta()->result();
         $data['penyelenggara'] = $this->db->get('penyelenggara')->row();
@@ -581,11 +581,40 @@ class Petugas extends CI_Controller
         date_default_timezone_set('Asia/Jakarta');
         $waktu = date('Y-m-d H:i:s');
 
+        function gantiformat($nomorhp)
+        {
+            //Terlebih dahulu kita trim dl
+            $nomorhp = trim($nomorhp);
+            //bersihkan dari karakter yang tidak perlu
+            $nomorhp = strip_tags($nomorhp);
+            // Berishkan dari spasi
+            $nomorhp = str_replace(" ", "", $nomorhp);
+            // bersihkan dari bentuk seperti  (022) 66677788
+            $nomorhp = str_replace("(", "", $nomorhp);
+            // bersihkan dari format yang ada titik seperti 0811.222.333.4
+            $nomorhp = str_replace(".", "", $nomorhp);
+
+            //cek apakah mengandung karakter + dan 0-9
+            if (!preg_match('/[^+0-9]/', trim($nomorhp))) {
+                // cek apakah no hp karakter 1-3 adalah +62
+                if (substr(trim($nomorhp), 0, 3) == '62') {
+                    $nomorhp = trim($nomorhp);
+                }
+                // cek apakah no hp karakter 1 adalah 0
+                elseif (substr($nomorhp, 0, 1) == '0') {
+                    $nomorhp = '62' . substr($nomorhp, 1);
+                }
+            }
+            return $nomorhp;
+        }
+
         $username = $this->input->post('username', true) == '' ? NULL : $this->input->post('username', true);
+        $no_hp = $this->input->post('no_hp', true);
+        $no = gantiformat($no_hp);
         $data = [
             'nama_lengkap' => htmlspecialchars($this->input->post('nama_lengkap', true)),
             'alamat' => htmlspecialchars($this->input->post('alamat', false)),
-            'no_hp' => htmlspecialchars($this->input->post('no_hp', false)),
+            'no_hp' => htmlspecialchars($no),
             'username' => htmlspecialchars($username),
             'image' => 'default.png',
             // 'password' => $this->input->post('password', true) == '' ? NULL : $this->input->post('password', true),

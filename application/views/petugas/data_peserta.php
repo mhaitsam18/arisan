@@ -116,7 +116,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="no_hp" class="form-label">No WhatsApp</label>
-                            <input type="text" minlength="11" maxlength="13" class="form-control no" id="no_hp" name="no_hp" placeholder="Harus diawali dengan angka 62" autocomplete="off" required oninvalid="this.setCustomValidity('Masukan No Whatsapp')" oninput="setCustomValidity('')" onkeypress="return restrictAlphabets(event)">
+                            <input type="text" minlength="10" maxlength="12" class="form-control no" id="no_hp" name="no_hp" autocomplete="off" required oninvalid="this.setCustomValidity('Masukan No Whatsapp')" oninput="setCustomValidity('')" onkeypress="return restrictAlphabets(event)">
                         </div>
                         <div class="mb-3">
                             <label for="nama_petugas" class="form-label">Nama Petugas</label>
