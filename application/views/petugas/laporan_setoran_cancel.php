@@ -81,14 +81,14 @@ function getBulan($bln)
                                 ?>
                                     <tr>
                                         <th scope=" row"><?= $count ?></th>
-                                        <?php $tgl = tgl_indo($row->tanggal) ?>
+                                        <?php $tgl = tgl_indo($row->tanggal_bayar) ?>
                                         <td><?= $tgl ?></td>
                                         <td>Rp. <?= number_format($row->nominal, 0, ',', '.') ?></td>
                                         <td>
                                             <?php if ($row->bukti == "dilakukan secara offline") : ?>
                                                 <i>dilakukan secara offline</i>
                                             <?php else : ?>
-                                                <a href="" data-bs-toggle="modal" data-bs-target="#exampleModal<?= $row->id; ?>"><?= $row->bukti ?></a>
+                                                <a href="" data-bs-toggle="modal" data-bs-target="#exampleModal<?= $row->id_bayar; ?>"><?= $row->bukti ?></a>
                                             <?php endif; ?>
                                         </td>
                                         <td>
@@ -117,7 +117,7 @@ function getBulan($bln)
     foreach ($rows as $row) :
         $count = $count + 1;
     ?>
-        <div class="modal fade" id="exampleModal<?= $row->id; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="exampleModal<?= $row->id_bayar; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">

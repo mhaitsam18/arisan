@@ -133,4 +133,16 @@ class M_Penyelenggara extends CI_Model
         $this->db->group_by('user.id');
         return $this->db->get();
     }
+
+    public function getTotalBayarPetugas()
+    {
+        $this->db->select('petugas.*, COUNT(user.id_petugas) AS jumlah_peserta, SUM(pembayaran_bulanan.nominal) AS total_bayar');
+        $this->db->from('petugas');
+        $this->db->join('user', 'petugas.id = user.id_petugas', 'left');
+        $this->db->join('pembayaran_bulanan', 'petugas.id = pembayaran_bulanan.id_petugas', 'left');
+        // $this->db->where('pembayaran.status', 'sukses');
+        $this->db->order_by('petugas.created_at', 'desc');
+        $this->db->group_by('petugas.id');
+        return $this->db->get();
+    }
 }

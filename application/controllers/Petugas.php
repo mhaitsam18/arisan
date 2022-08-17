@@ -118,7 +118,11 @@ class Petugas extends CI_Controller
     {
         $data['title'] = 'Pembayaran Peserta';
         $data['user'] = $this->db->get_where('petugas', ['username' => $this->session->userdata('username')])->row_array();
-        $data['rows'] = $this->M_Petugas->getDataSukses()->result();
+        $id_petugas = $this->session->userdata('id');
+        // $data['id_petugas'] = $this->session->userdata('id');
+        $data['tgl_max'] = $this->db->query("SELECT MAX(tanggal_akhir_periode) as tgl_max FROM pembayaran_bulanan WHERE id_petugas = $id_petugas AND status = 'sukses'")->row();
+        // $data['rows'] = $this->M_Petugas->getDataSukses()->result();
+        // $data['rows'] = $this->db->query("SELECT tanggal, pembayaran.nama_lengkap AS nama_peserta, pembayaran.nominal AS nominal_peserta, pembayaran.bukti AS bukti_peserta, pembayaran.status AS status_peserta, pembayaran.id AS id_pembayaran FROM pembayaran JOIN user ON user.id = pembayaran.id_user JOIN pembayaran_bulanan ON user.id_petugas = pembayaran_bulanan.id_petugas WHERE user.id_petugas = $id_petugas AND pembayaran.status = 'sukses' AND pembayaran_bulanan.tanggal_akhir_periode = ... FROM pembayaran_bulanan WHERE id_petugas = $id_petugas') ORDER BY tanggal ASC")->result();
         $data['penyelenggara'] = $this->db->get('penyelenggara')->row();
 
         // $this->db->order_by('tanggal', 'DESC');
@@ -135,6 +139,11 @@ class Petugas extends CI_Controller
         $data['user'] = $this->db->get_where('petugas', ['username' => $this->session->userdata('username')])->row_array();
         $data['rows'] = $this->M_Petugas->getDataSuksesByTanggal()->result();
         $data['penyelenggara'] = $this->db->get('penyelenggara')->row();
+        $id_petugas = $this->session->userdata('id');
+        // $data['id_petugas'] = $this->session->userdata('id');
+        $data['tgl_awal'] = $this->input->post('tgl_awal');
+        $data['tgl_akhir'] = $this->input->post('tgl_akhir');
+        $data['tgl_max'] = $this->db->query("SELECT MAX(tanggal_akhir_periode) as tgl_max FROM pembayaran_bulanan WHERE id_petugas = $id_petugas")->row();
 
         $this->db->order_by('tanggal', 'DESC');
 
@@ -156,6 +165,25 @@ class Petugas extends CI_Controller
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar_petugas', $data);
         $this->load->view('petugas/pembayaran_peserta_batal', $data);
+        $this->load->view('templates/footer');
+    }
+
+    public function pembayaran_peserta_disetor()
+    {
+        $data['title'] = 'Pembayaran Peserta';
+        $data['user'] = $this->db->get_where('petugas', ['username' => $this->session->userdata('username')])->row_array();
+        $id_petugas = $this->session->userdata('id');
+        // $data['id_petugas'] = $this->session->userdata('id');
+        $data['tgl_max'] = $this->db->query("SELECT MAX(tanggal_akhir_periode) as tgl_max FROM pembayaran_bulanan WHERE id_petugas = $id_petugas AND status = 'sukses'")->row();
+        // $data['rows'] = $this->M_Petugas->getDataSukses()->result();
+        // $data['rows'] = $this->db->query("SELECT tanggal, pembayaran.nama_lengkap AS nama_peserta, pembayaran.nominal AS nominal_peserta, pembayaran.bukti AS bukti_peserta, pembayaran.status AS status_peserta, pembayaran.id AS id_pembayaran FROM pembayaran JOIN user ON user.id = pembayaran.id_user JOIN pembayaran_bulanan ON user.id_petugas = pembayaran_bulanan.id_petugas WHERE user.id_petugas = $id_petugas AND pembayaran.status = 'sukses' AND pembayaran_bulanan.tanggal_akhir_periode = ... FROM pembayaran_bulanan WHERE id_petugas = $id_petugas') ORDER BY tanggal ASC")->result();
+        $data['penyelenggara'] = $this->db->get('penyelenggara')->row();
+
+        // $this->db->order_by('tanggal', 'DESC');
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar_petugas', $data);
+        $this->load->view('petugas/pembayaran_peserta_disetor', $data);
         $this->load->view('templates/footer');
     }
 
@@ -409,7 +437,7 @@ class Petugas extends CI_Controller
         $penyelenggara = $this->db->get_where('penyelenggara', ['id' => $user['id_penyelenggara']])->row();
 
         if ($pembayaran) {
-            // $tanggal_minimal = date('Y-m-d', strtotime('+1 days', strtotime($pembayaran->tanggal)));
+            // $tanggal_minimal = date('Y-m-d', strtotime('-1 days', strtotime($pembayaran->tanggal)));
             $tanggal_minimal = $pembayaran->tanggal;
         } else {
             $tanggal_minimal = $penyelenggara->tanggal_mulai;
@@ -431,7 +459,6 @@ class Petugas extends CI_Controller
         } else {
             $total = $jml_bayar;
         }
-
 
         echo json_encode(['nominal' => $total, 'tanggal_minimal' => $tanggal_minimal]);
     }
@@ -501,7 +528,9 @@ class Petugas extends CI_Controller
         $bukti = $_FILES['bukti'];
         $id_petugas = htmlspecialchars($this->input->post('id_petugas', true));
         $nama_lengkap = htmlspecialchars($this->input->post('nama_lengkap', true));
-        $tanggal = htmlspecialchars($this->input->post('tanggal', true));
+        $tanggal_awal_periode = htmlspecialchars($this->input->post('tanggal_awal_periode', true));
+        $tanggal_akhir_periode = htmlspecialchars($this->input->post('tanggal_akhir_periode', true));
+        $tanggal_bayar = htmlspecialchars($this->input->post('tanggal_bayar', true));
         $nominal1 = str_replace('Rp.', '', $this->input->post('nominal', true));
         $nominal2 = str_replace('.', '', $nominal1);
         $status = ('proses');
@@ -524,7 +553,9 @@ class Petugas extends CI_Controller
             'bukti' => $bukti,
             'id_petugas' => $id_petugas,
             'nama_lengkap' => $nama_lengkap,
-            'tanggal' => $tanggal,
+            'tanggal_awal_periode' => $tanggal_awal_periode,
+            'tanggal_akhir_periode' => $tanggal_akhir_periode,
+            'tanggal_bayar' => $tanggal_bayar,
             'nominal' => $nominal2,
             'status' => $status
         );

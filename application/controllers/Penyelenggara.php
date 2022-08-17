@@ -32,9 +32,9 @@ class Penyelenggara extends CI_Controller
     {
         $data['title'] = 'Data Petugas';
         $data['user'] = $this->db->get_where('penyelenggara', ['username' => $this->session->userdata('username')])->row_array();
-        $data['rows'] = $this->db->query('SELECT petugas.*, COUNT(user.id_petugas) AS jumlah_perserta FROM petugas LEFT JOIN user ON petugas.id = user.id_petugas GROUP BY petugas.id ORDER BY created_at DESC')->result();
+        // $data['rows'] = $this->db->query('SELECT petugas.*, COUNT(user.id_petugas) AS jumlah_perserta FROM petugas LEFT JOIN user ON petugas.id = user.id_petugas GROUP BY petugas.id ORDER BY created_at DESC')->result();
         // $data['rows'] = $this->db->query('SELECT * FROM petugas order by id desc')->result();
-
+        $data['rows'] = $this->M_Penyelenggara->getTotalBayarPetugas()->result();
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar_penyelenggara', $data);

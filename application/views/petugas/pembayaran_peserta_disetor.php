@@ -64,23 +64,6 @@ function getBulan($bln)
                     </div>
                     <div class="card-body">
                         <?= $this->session->flashdata('message'); ?>
-                        <form action="<?= base_url('petugas/pembayaran_peserta_sukses_by_tanggal') ?>" method="POST" enctype="multipart/form-data">
-                            <div class="row mb-3">
-                                <div class="col-md-3">
-                                    <label for="" class="form-label">Tanggal Awal</label>
-                                    <input type="date" name="tgl_awal" id="" class="form-control" min="<?= $penyelenggara->tanggal_mulai; ?>" max="<?= $penyelenggara->tanggal_selesai; ?>" value="<?= set_value('tgl_awal') ?>" required>
-                                </div>
-                                <div class="col-md-3">
-                                    <label for="" class="form-label">Tanggal Akhir</label>
-                                    <input type="date" name="tgl_akhir" id="" class="form-control" min="<?= $penyelenggara->tanggal_mulai; ?>" max="<?= $penyelenggara->tanggal_selesai; ?>" value="<?= set_value('tgl_akhir') ?>" required>
-                                </div>
-                                <div class="col-md-3">
-                                    <button type="submit" class="btn btn-success btn-sm" style="margin-top: 32px;">Sort</button>
-                                    <a href="<?= base_url('petugas/pembayaran_peserta_sukses') ?>" class="btn btn-secondary btn-sm" style="margin-top: 32px;">Reset</a>
-                                    <button class="btn btn-success btn-sm" style="margin-top: 32px;" disabled="true">Bayar</button>
-                                </div>
-                            </div>
-                        </form>
                         <table id="datatablesSimple">
                             <thead>
                                 <tr class="table-warning">
@@ -97,13 +80,15 @@ function getBulan($bln)
                                 $id_petugas = $user['id'];
                                 // $tgl = $this->db->query("SELECT MAX(tanggal_akhir_periode) as tgl_max FROM pembayaran_bulanan WHERE id_petugas = $id_petugas")->row();
                                 $tgl = $tgl_max->tgl_max;
+                                $tgl_mulai = $penyelenggara->tanggal_mulai;
                                 $data = $this->db->query(
                                     "SELECT tanggal, pembayaran.nama_lengkap AS nama_peserta, pembayaran.nominal AS nominal_peserta, pembayaran.bukti AS bukti_peserta, pembayaran.status AS status_peserta, pembayaran.id AS id_pembayaran FROM pembayaran 
                                 JOIN user ON user.id = pembayaran.id_user 
                                 JOIN pembayaran_bulanan ON user.id_petugas = pembayaran_bulanan.id_petugas 
                                 WHERE user.id_petugas = $id_petugas 
                                 AND pembayaran.status = 'sukses' 
-                                AND pembayaran.tanggal > '$tgl'
+                                AND pembayaran.tanggal >= '$tgl_mulai'
+                                AND pembayaran.tanggal <= '$tgl'
                                 -- AND pembayaran_bulanan.status = 'sukses'
                                 -- AND pembayaran.tanggal > '2022-06-15'
                                 -- AND pembayaran.tanggal BETWEEN $tgl_max->tgl_max AND $penyelenggara->tanggal_selesai

@@ -23,6 +23,7 @@
                                     <th>Alamat</th>
                                     <th>No HP</th>
                                     <th>Jumlah Peserta</th>
+                                    <th>Jumlah Bayar</th>
                                     <th>Status</th>
                                     <th>Aksi</th>
                                 </tr>
@@ -42,8 +43,9 @@
                                         <td><?= $row->nama_lengkap ?></td>
                                         <td><?= $row->alamat ?></td>
                                         <td><?= $row->no_hp ?></td>
-                                        <td><?= $row->jumlah_perserta ?> Peserta</td>
-                                        <td><?= $row->status  ?></td>
+                                        <td><?= $row->jumlah_peserta ?> Peserta</td>
+                                        <td><?= number_format($row->total_bayar, 0, ',', '.') ?></td>
+                                        <td><?= $row->status ?></td>
                                         <td>
                                             <?php if ($row->status == 'aktif') : ?>
                                                 <a href="" class="btn btn-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#nonaktif<?= $row->id; ?>"> Ubah Status</a>
@@ -84,7 +86,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="no_hp" class="form-label">No WhatsApp</label>
-                            <input type="text" class="form-control" id="no_hp" name="no_hp" placeholder="Harus diawali dengan angka 62" minlength="11" maxlength="13" autocomplete="off" required oninvalid="this.setCustomValidity('Masukan No WhatsApp')" oninput="setCustomValidity('')" onkeypress="return restrictAlphabets(event)">
+                            <input type="text" class="form-control" id="no_hp" name="no_hp" minlength="11" maxlength="13" autocomplete="off" required oninvalid="this.setCustomValidity('Masukan No WhatsApp')" oninput="setCustomValidity('')" onkeypress="return restrictAlphabets(event)">
                         </div>
                         <button type="submit" class="btn btn-success  btn-sm">Submit</button>
                     </form>

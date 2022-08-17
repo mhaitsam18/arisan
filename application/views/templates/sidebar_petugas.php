@@ -51,6 +51,7 @@
                                 <a class="nav-link text-dark" href="<?= base_url('petugas/pembayaran_peserta')  ?>">Proses</a>
                                 <a class="nav-link text-dark" href="<?= base_url('petugas/pembayaran_peserta_sukses')  ?>">Sukses</a>
                                 <a class="nav-link text-dark" href="<?= base_url('petugas/pembayaran_peserta_batal')  ?>">Batal</a>
+                                <a class="nav-link text-dark" href="<?= base_url('petugas/pembayaran_peserta_disetor')  ?>">Sudah disetor</a>
                             </nav>
                         </div>
                         <a class="nav-link text-dark" href="<?= base_url('petugas/pembayaran_offline')  ?>">
@@ -80,7 +81,8 @@
                 </div>
                 <div class="sb-sidenav-footer">
                     <div class="small">Logged in as:</div>
-                    <?= $user['nama_lengkap'];  ?>
+                    <?= $user['nama_lengkap'];
+                    ?>
                 </div>
             </nav>
         </div>

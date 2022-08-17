@@ -99,7 +99,26 @@ function getBulan($bln)
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php if (empty($rows)) : ?>
+                                <?php
+                                $id_petugas = $user['id'];
+                                // $tgl = $this->db->query("SELECT MAX(tanggal_akhir_periode) as tgl_max FROM pembayaran_bulanan WHERE id_petugas = $id_petugas")->row();
+                                $tgl = $tgl_max->tgl_max;
+                                $data = $this->db->query(
+                                    "SELECT tanggal, pembayaran.nama_lengkap AS nama_peserta, pembayaran.nominal AS nominal_peserta, pembayaran.bukti AS bukti_peserta, pembayaran.status AS status_peserta, pembayaran.id AS id_pembayaran FROM pembayaran 
+                                JOIN user ON user.id = pembayaran.id_user 
+                                JOIN pembayaran_bulanan ON user.id_petugas = pembayaran_bulanan.id_petugas 
+                                AND pembayaran.status = 'sukses' 
+                                WHERE user.id_petugas = $id_petugas 
+                                AND pembayaran.tanggal >= '$tgl_awal'
+                                AND pembayaran.tanggal <= '$tgl_akhir'
+                                AND pembayaran.tanggal > '$tgl'
+                                -- AND pembayaran_bulanan.status = 'sukses'
+                                -- AND pembayaran.tanggal > '2022-06-15'
+                                -- AND pembayaran.tanggal BETWEEN $tgl_max->tgl_max AND $penyelenggara->tanggal_selesai
+                                ORDER BY tanggal ASC"
+                                )->result();
+                                ?>
+                                <?php if (empty($data)) : ?>
                                     <tr>
                                         <td colspan="6"><i>data tidak ditemukan</i></td>
                                     </tr>
@@ -107,24 +126,24 @@ function getBulan($bln)
                                     <?php
                                     $count = 0;
                                     $jml = 0;
-                                    foreach ($rows as $row) :
+                                    foreach ($data as $row) :
                                         $count = $count + 1;
                                     ?>
                                         <tr>
                                             <th scope=" row"><?= $count ?></th>
-                                            <td><?= $row->nama_lengkap ?></td>
+                                            <td><?= $row->nama_peserta ?></td>
                                             <?php $tgl = tgl_indo($row->tanggal) ?>
                                             <td><?= $tgl ?></td>
-                                            <td>Rp.<?= number_format($row->nominal, 0, ',', '.') ?></td>
+                                            <td>Rp.<?= number_format($row->nominal_peserta, 0, ',', '.') ?></td>
                                             <td>
-                                                <?php if ($row->bukti == 'dilakukan secara offline') : ?>
+                                                <?php if ($row->bukti_peserta == 'dilakukan secara offline') : ?>
                                                     <i>dilakukan secara offline</i>
                                                 <?php else : ?>
-                                                    <a href="" data-bs-toggle="modal" data-bs-target="#exampleModal<?= $row->id; ?>"><?= $row->bukti ?></a>
+                                                    <a href="" data-bs-toggle="modal" data-bs-target="#exampleModal<?= $row->id_pembayaran; ?>"><?= $row->bukti_peserta ?></a>
                                                 <?php endif; ?>
                                             </td>
                                             <td>
-                                                <?php if ($row->status == 'proses') : ?>
+                                                <?php if ($row->status_peserta == 'proses') : ?>
                                                     <a href="" class="badge rounded-pill bg-warning">proses</a>
                                                 <?php else : ?>
                                                     <button href="" class="badge rounded-pill bg-success" disabled>Sukses <i class="fas fa-check"></i> </button>
@@ -132,7 +151,7 @@ function getBulan($bln)
                                             </td>
 
                                         </tr>
-                                    <?php $jml += $row->nominal;
+                                    <?php $jml += $row->nominal_peserta;
                                     endforeach; ?>
                                     <tr>
                                         <th colspan="3">Total</th>
@@ -156,18 +175,20 @@ function getBulan($bln)
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="<?= base_url('petugas/pembayaran_bulanan') ?>" method="post" enctype="multipart/form-data">
+                    <form action="<?= base_url('petugas/proses_pembayaran_bulanan') ?>" method="post" enctype="multipart/form-data">
                         <div class="row mb-3">
                             <div class="col-sm-12">
                                 <label for="nama_lengkap" class="form-label">Nama</label>
                                 <input type="hidden" name="id_petugas" id="" value="<?= $user['id'] ?>">
                                 <input type="text" class="form-control" id="nama_lengkap" name="nama_lengkap" readonly value="<?= $user['nama_lengkap']  ?>">
+                                <input type="hidden" class="form-control" id="" autocomplete="off" name="tanggal_awal_periode" required value="<?= set_value('tgl_awal') ?>">
+                                <input type="hidden" class="form-control" id="" autocomplete="off" name="tanggal_akhir_periode" required value="<?= set_value('tgl_akhir') ?>">
                             </div>
                         </div>
                         <div class="row mb-3">
                             <div class="col-sm-12">
                                 <label for="tanggal" class="form-label">Tanggal Pembayaran</label>
-                                <input type="date" class="form-control" id="tanggal" autocomplete="off" name="tanggal" min="<?= $tgl_akhir; ?>" max="<?= $penyelenggara->tanggal_selesai; ?>" required>
+                                <input type="date" class="form-control" id="tanggal" autocomplete="off" name="tanggal_bayar" min="<?= $tgl_akhir; ?>" max="<?= $penyelenggara->tanggal_selesai; ?>" required>
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -197,10 +218,10 @@ function getBulan($bln)
     <!-- Modal -->
     <?php
     $count = 0;
-    foreach ($rows as $row) :
+    foreach ($data as $row) :
         $count = $count + 1;
     ?>
-        <div class="modal fade" id="exampleModal<?= $row->id; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="exampleModal<?= $row->id_pembayaran; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -208,32 +229,7 @@ function getBulan($bln)
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <img src="<?= base_url('assets/img/bukti_bayar/') . $row->bukti; ?>" class="img-fluid " style="width: 500px; height: 500px; display:block; margin:auto;">
-                    </div>
-                </div>
-            </div>
-        </div>
-    <?php endforeach; ?>
-
-    <!-- Modal hapus data pembayaran-->
-    <?php
-    $count = 0;
-    foreach ($rows as $row) :
-        $count = $count + 1;
-    ?>
-        <div class="modal fade" id="hapus<?= $row->id; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Hapus Data Pembayaran</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        Yakin akan menghapus data ini?
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Tidak</button>
-                        <a href="<?= base_url('petugas/hapus_pembayaran/') . $row->id ?>" class="btn btn-danger btn-sm">Ya</a>
+                        <img src="<?= base_url('assets/img/bukti_bayar/') . $row->bukti_peserta; ?>" class="img-fluid " style="width: 500px; height: 500px; display:block; margin:auto;">
                     </div>
                 </div>
             </div>
