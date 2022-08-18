@@ -34,7 +34,9 @@ class Penyelenggara extends CI_Controller
         $data['user'] = $this->db->get_where('penyelenggara', ['username' => $this->session->userdata('username')])->row_array();
         // $data['rows'] = $this->db->query('SELECT petugas.*, COUNT(user.id_petugas) AS jumlah_perserta FROM petugas LEFT JOIN user ON petugas.id = user.id_petugas GROUP BY petugas.id ORDER BY created_at DESC')->result();
         // $data['rows'] = $this->db->query('SELECT * FROM petugas order by id desc')->result();
-        $data['rows'] = $this->M_Penyelenggara->getTotalBayarPetugas()->result();
+        $data['rows'] = $this->M_Penyelenggara->getJumlahPeserta()->result();
+        $data['rows2'] = $this->M_Penyelenggara->getTotalBayarPetugas()->result();
+        // $data['jml_peserta'] = $this->db->query("SELECT petugas.*, COUNT(user.id_petugas) AS jumlah_peserta FROM petugas JOIN user ON petugas.id = user.id_petugas GROUP BY petugas.id")->row();
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar_penyelenggara', $data);
@@ -85,7 +87,8 @@ class Penyelenggara extends CI_Controller
             'image' => 'default.png',
             // 'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
             'status' => 'nonaktif',
-            'created_at' => $waktu
+            'created_at' => $waktu,
+            'id_penyelenggara' => $this->input->post('id_penyelenggara')
         ];
 
         $this->db->insert('petugas', $data);
@@ -187,6 +190,7 @@ class Penyelenggara extends CI_Controller
         $data['title'] = 'Paket Barang Peserta';
         $data['user'] = $this->db->get_where('penyelenggara', ['username' => $this->session->userdata('username')])->row_array();
         $data['rows'] = $this->M_Penyelenggara->getBarangPeserta($id_peserta)->result();
+        $data['penyelenggara'] = $this->db->get('penyelenggara')->row();
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar_penyelenggara', $data);
@@ -270,7 +274,7 @@ class Penyelenggara extends CI_Controller
     public function proses_status($id)
     {
         $this->db->set('status', 'sukses');
-        $this->db->where('id', $id);
+        $this->db->where('id_bayar', $id);
         $this->db->update('pembayaran_bulanan');
 
         $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -286,7 +290,7 @@ class Penyelenggara extends CI_Controller
         $keterangan = $this->input->post('keterangan', true);
 
         $this->db->set('status', 'cancel');
-        $this->db->where('id', $id);
+        $this->db->where('id_bayar', $id);
         $this->db->update('pembayaran_bulanan');
         header("location:https://api.whatsapp.com/send?phone=$no_hp&text=Keterangan:%20$keterangan");
 
@@ -476,6 +480,7 @@ class Penyelenggara extends CI_Controller
         $data['title'] = 'Data Barang';
         $data['user'] = $this->db->get_where('penyelenggara', ['username' => $this->session->userdata('username')])->row_array();
         $data['rows'] = $this->M_DataMaster->getDataBarang()->result();
+        $data['penyelenggara'] = $this->db->get('penyelenggara')->row();
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar_penyelenggara', $data);
@@ -529,8 +534,11 @@ class Penyelenggara extends CI_Controller
 
         $this->load->library('upload', $config);
         if (!$this->upload->do_upload('gambar')) {
-            echo 'gagal';
-            die;
+            $this->session->set_flashdata('message', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+       Pastikan format gambah sudah sesuai
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>');
+            redirect('penyelenggara/data_barang');
         } else {
             $gambar = $this->upload->data('file_name');
         }
@@ -543,7 +551,16 @@ class Penyelenggara extends CI_Controller
             'harga_beli' => $harga_beli
         );
 
-        $this->db->insert('barang', $data);
+        $cek = $this->db->query("SELECT * FROM barang WHERE nama_barang = '$nama_barang'")->num_rows();
+        if ($cek == 0) {
+            $this->db->insert('barang', $data);
+        } else {
+            $this->session->set_flashdata('message', '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+            Data gagal ditambahkan, pastikan nama barang belum digunakan
+             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+           </div>');
+            redirect('penyelenggara/data_barang');
+        }
 
         $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">
        Barang berhasil ditambahkan
@@ -681,6 +698,7 @@ class Penyelenggara extends CI_Controller
             'required' => 'Nominal tidak boleh kosong'
         ]);
         // $data['barang'] = $this->M_Barang->getDataBarang();
+        $data['penyelenggara'] = $this->db->get('penyelenggara')->row();
         if ($this->form_validation->run() == false) {
             $data['title'] = 'Input Setoran Petugas';
             $data['user'] = $this->db->get_where('penyelenggara', ['username' => $this->session->userdata('username')])->row_array();

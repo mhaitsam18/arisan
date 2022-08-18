@@ -65,7 +65,7 @@ class M_Penyelenggara extends CI_Model
     public function getDataProses()
     {
         $status = "pembayaran_bulanan.status='proses'";
-        $this->db->select('*, pembayaran_bulanan.id as id_pembayaran, petugas.id as id_petugas, petugas.no_hp as noHP');
+        $this->db->select('*, pembayaran_bulanan.id_bayar as id_pembayaran, petugas.id as id_petugas, petugas.no_hp as noHP');
         $this->db->from('pembayaran_bulanan');
         $this->db->join('petugas', 'petugas.id = pembayaran_bulanan.id_petugas');
         $this->db->where($status);
@@ -136,11 +136,23 @@ class M_Penyelenggara extends CI_Model
 
     public function getTotalBayarPetugas()
     {
-        $this->db->select('petugas.*, COUNT(user.id_petugas) AS jumlah_peserta, SUM(pembayaran_bulanan.nominal) AS total_bayar');
+        $this->db->select('petugas.*, SUM(pembayaran_bulanan.nominal) AS jumlah_bayar');
         $this->db->from('petugas');
-        $this->db->join('user', 'petugas.id = user.id_petugas', 'left');
         $this->db->join('pembayaran_bulanan', 'petugas.id = pembayaran_bulanan.id_petugas', 'left');
-        // $this->db->where('pembayaran.status', 'sukses');
+        // $this->db->join('user', 'petugas.id = user.id_petugas', 'left');
+        // $this->db->where('pembayaran_bulanan.status', 'sukses');
+        $this->db->order_by('petugas.created_at', 'desc');
+        $this->db->group_by('petugas.id');
+        return $this->db->get();
+    }
+
+    public function getJumlahPeserta()
+    {
+        $this->db->select('petugas.*, COUNT(user.id_petugas) AS jumlah_peserta');
+        $this->db->from('petugas');
+        // $this->db->join('pembayaran_bulanan', 'petugas.id = pembayaran_bulanan.id_petugas', 'left');
+        $this->db->join('user', 'petugas.id = user.id_petugas', 'left');
+        // $this->db->where('pembayaran_bulanan.status', 'sukses');
         $this->db->order_by('petugas.created_at', 'desc');
         $this->db->group_by('petugas.id');
         return $this->db->get();

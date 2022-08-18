@@ -97,18 +97,33 @@ function getBulan($bln)
                                 $id_petugas = $user['id'];
                                 // $tgl = $this->db->query("SELECT MAX(tanggal_akhir_periode) as tgl_max FROM pembayaran_bulanan WHERE id_petugas = $id_petugas")->row();
                                 $tgl = $tgl_max->tgl_max;
-                                $data = $this->db->query(
-                                    "SELECT tanggal, pembayaran.nama_lengkap AS nama_peserta, pembayaran.nominal AS nominal_peserta, pembayaran.bukti AS bukti_peserta, pembayaran.status AS status_peserta, pembayaran.id AS id_pembayaran FROM pembayaran 
-                                JOIN user ON user.id = pembayaran.id_user 
-                                JOIN pembayaran_bulanan ON user.id_petugas = pembayaran_bulanan.id_petugas 
-                                WHERE user.id_petugas = $id_petugas 
-                                AND pembayaran.status = 'sukses' 
-                                AND pembayaran.tanggal > '$tgl'
-                                -- AND pembayaran_bulanan.status = 'sukses'
-                                -- AND pembayaran.tanggal > '2022-06-15'
-                                -- AND pembayaran.tanggal BETWEEN $tgl_max->tgl_max AND $penyelenggara->tanggal_selesai
-                                ORDER BY tanggal ASC"
-                                )->result();
+                                if ($tgl == "") {
+                                    $data = $this->db->query(
+                                        "SELECT tanggal, pembayaran.nama_lengkap AS nama_peserta, pembayaran.nominal AS nominal_peserta, pembayaran.bukti AS bukti_peserta, pembayaran.status AS status_peserta, pembayaran.id AS id_pembayaran FROM pembayaran 
+                                    JOIN user ON user.id = pembayaran.id_user 
+                                    -- JOIN pembayaran_bulanan ON user.id_petugas = pembayaran_bulanan.id_petugas 
+                                    WHERE user.id_petugas = $id_petugas 
+                                    AND pembayaran.status = 'sukses' 
+                                    -- AND pembayaran.tanggal > '$tgl'
+                                    -- AND pembayaran_bulanan.status = 'sukses'
+                                    -- AND pembayaran.tanggal > '2022-06-15'
+                                    -- AND pembayaran.tanggal BETWEEN $tgl_max->tgl_max AND $penyelenggara->tanggal_selesai
+                                    ORDER BY tanggal ASC"
+                                    )->result();
+                                } else {
+                                    $data = $this->db->query(
+                                        "SELECT tanggal, pembayaran.nama_lengkap AS nama_peserta, pembayaran.nominal AS nominal_peserta, pembayaran.bukti AS bukti_peserta, pembayaran.status AS status_peserta, pembayaran.id AS id_pembayaran FROM pembayaran 
+                                    JOIN user ON user.id = pembayaran.id_user 
+                                    JOIN pembayaran_bulanan ON user.id_petugas = pembayaran_bulanan.id_petugas 
+                                    WHERE user.id_petugas = $id_petugas 
+                                    AND pembayaran.status = 'sukses' 
+                                    AND pembayaran.tanggal > '$tgl'
+                                    -- AND pembayaran_bulanan.status = 'sukses'
+                                    -- AND pembayaran.tanggal > '2022-06-15'
+                                    -- AND pembayaran.tanggal BETWEEN $tgl_max->tgl_max AND $penyelenggara->tanggal_selesai
+                                    ORDER BY tanggal ASC"
+                                    )->result();
+                                }
                                 ?>
                                 <?php
                                 $count = 0;

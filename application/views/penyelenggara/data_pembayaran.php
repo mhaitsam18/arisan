@@ -85,24 +85,24 @@ function getBulan($bln)
                                         <tr>
                                             <th scope=" row"><?= $count ?></th>
                                             <td><?= $row->nama_lengkap ?></td>
-                                            <?php $tgl = tgl_indo($row->tanggal) ?>
+                                            <?php $tgl = tgl_indo($row->tanggal_bayar) ?>
                                             <td><?= $tgl ?></td>
                                             <td>Rp. <?= number_format($row->nominal, 0, ',', '.') ?></td>
                                             <td>
                                                 <?php if ($row->bukti == "dilakukan secara offline") : ?>
                                                     <i>dilakukan secara offline</i>
                                                 <?php else : ?>
-                                                    <a href="" data-bs-toggle="modal" data-bs-target="#exampleModal<?= $row->id_pembayaran; ?>"><?= $row->bukti ?></a>
+                                                    <a href="" data-bs-toggle="modal" data-bs-target="#exampleModal<?= $row->id_bayar ?>"><?= $row->bukti ?></a>
                                                 <?php endif; ?>
                                             </td>
                                             <td>
                                                 <?php if ($row->status == 'proses') : ?>
-                                                    <a href="" class="badge rounded-pill bg-warning" style="text-decoration: none;" data-bs-toggle="modal" data-bs-target="#approve<?= $row->id_pembayaran; ?>">Approve</a>
-                                                    <a href="" class="badge rounded-pill bg-danger" style="text-decoration: none;" data-bs-toggle="modal" data-bs-target="#cancel<?= $row->id_pembayaran; ?>">Cancel</a>
+                                                    <a href="" class="badge rounded-pill bg-warning" style="text-decoration: none;" data-bs-toggle="modal" data-bs-target="#approve<?= $row->id_bayar; ?>">Approve</a>
+                                                    <a href="" class="badge rounded-pill bg-danger" style="text-decoration: none;" data-bs-toggle="modal" data-bs-target="#cancel<?= $row->id_bayar; ?>">Cancel</a>
                                                 <?php else : ?>
-                                                    <a href="" class="btn btn-success btn-sm" style="text-decoration: none;" data-bs-toggle="modal" data-bs-target="#approve<?= $row->id_pembayaran; ?>"><i class="fas fa-check-circle"></i></a>
+                                                    <a href="" class="btn btn-success btn-sm" style="text-decoration: none;" data-bs-toggle="modal" data-bs-target="#approve<?= $row->id_bayar; ?>"><i class="fas fa-check-circle"></i></a>
                                                     <!-- <a href="" class="badge rounded-pill bg-success">Sukses</a> -->
-                                                    <a href="" class="btn btn-danger btn-sm" style="text-decoration: none;" data-bs-toggle="modal" data-bs-target="#cancel<?= $row->id_pembayaran; ?>"><i class="fas fa-times-circle"></i></a>
+                                                    <a href="" class="btn btn-danger btn-sm" style="text-decoration: none;" data-bs-toggle="modal" data-bs-target="#cancel<?= $row->id_bayar; ?>"><i class="fas fa-times-circle"></i></a>
                                                 <?php endif; ?>
                                             </td>
                                         </tr>
@@ -131,7 +131,7 @@ function getBulan($bln)
     foreach ($proses as $row) :
         $count = $count + 1;
     ?>
-        <div class="modal fade" id="exampleModal<?= $row->id_pembayaran; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="exampleModal<?= $row->id_bayar; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -152,7 +152,7 @@ function getBulan($bln)
     foreach ($proses as $row) :
         $count = $count + 1;
     ?>
-        <div class="modal fade" id="approve<?= $row->id_pembayaran; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="approve<?= $row->id_bayar; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -164,7 +164,7 @@ function getBulan($bln)
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Tidak</button>
-                        <a href="<?= base_url('penyelenggara/proses_status/') . $row->id_pembayaran ?>" class="btn btn-success btn-sm">Ya</a>
+                        <a href="<?= base_url('penyelenggara/proses_status/') . $row->id_bayar ?>" class="btn btn-success btn-sm">Ya</a>
                     </div>
                 </div>
             </div>
@@ -177,14 +177,14 @@ function getBulan($bln)
     foreach ($proses as $row) :
         $count = $count + 1;
     ?>
-        <div class="modal fade" id="cancel<?= $row->id_pembayaran; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="cancel<?= $row->id_bayar; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">Tolak Pembayaran</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <form action="<?= base_url('penyelenggara/cancel_status/') . $row->id_pembayaran ?>" method="POST">
+                    <form action="<?= base_url('penyelenggara/cancel_status/') . $row->id_bayar ?>" method="POST">
                         <div class="modal-body">
                             Yakin untuk tolak?
                             <input type="text" class="form-control mt-3 mb-2" name="no_hp" value="<?= $row->noHP; ?>" readonly>

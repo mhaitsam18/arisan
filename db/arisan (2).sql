@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 10, 2022 at 03:14 PM
+-- Generation Time: Aug 18, 2022 at 06:15 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -186,7 +186,7 @@ INSERT INTO `pembayaran` (`id`, `id_user`, `nama_lengkap`, `tanggal`, `nominal`,
 (132, 105, 'Sanirah', '2022-07-16', '6000.00', 'bukti_600062.jpeg', 'sukses'),
 (133, 105, 'Sanirah', '2022-07-17', '6000.00', 'bukti_600063.jpeg', 'sukses'),
 (134, 105, 'Sanirah', '2022-07-18', '6000.00', 'bukti_600064.jpeg', 'sukses'),
-(135, 106, 'Dede', '2022-05-15', '10000.00', 'bukti_10000.jpeg', 'cancel'),
+(135, 106, 'Dede', '2022-05-15', '10000.00', 'bukti_10000.jpeg', 'sukses'),
 (136, 106, 'Dede', '2022-05-16', '10000.00', 'bukti_100001.jpeg', 'sukses'),
 (137, 106, 'Dede', '2022-05-17', '10000.00', 'bukti_100002.jpeg', 'sukses'),
 (138, 106, 'Dede', '2022-05-18', '10000.00', 'bukti_100003.jpeg', 'sukses'),
@@ -383,9 +383,110 @@ INSERT INTO `pembayaran` (`id`, `id_user`, `nama_lengkap`, `tanggal`, `nominal`,
 (329, 115, 'Melan', '2022-07-19', '5450.00', 'buktibayar20.jpeg', 'sukses'),
 (330, 115, 'Melan', '2022-07-20', '5450.00', 'buktibayar21.jpeg', 'sukses'),
 (331, 115, 'Melan', '2022-07-21', '5450.00', 'buktibayar22.jpeg', 'sukses'),
-(335, 105, 'Sanirah', '2022-07-20', '12000.00', 'logo2.jpg', 'cancel'),
-(336, 119, 'idham', '2022-05-16', '2800.00', 'logo4.jpg', 'cancel'),
-(337, 105, 'Sanirah', '2022-07-19', '6000.00', 'Beige_Mood_Board_Photo_Collage.png', 'cancel');
+(332, 105, 'Sanirah', '2022-07-19', '6000.00', 'bukti_600065.jpeg', 'sukses'),
+(333, 117, 'Dewi', '2022-05-15', '5000.00', 'bukti_5rb24.jpeg', 'sukses'),
+(334, 117, 'Dewi', '2022-05-16', '5000.00', 'bukti_5rb25.jpeg', 'sukses'),
+(335, 117, 'Dewi', '2022-05-17', '5000.00', 'bukti_5rb26.jpeg', 'sukses'),
+(336, 105, 'Sanirah', '2022-07-20', '6000.00', 'bukti_600065.jpeg', 'sukses'),
+(337, 105, 'Sanirah', '2022-07-21', '6000.00', 'bukti_600066.jpeg', 'sukses'),
+(338, 105, 'Sanirah', '2022-07-22', '6000.00', 'bukti_600067.jpeg', 'sukses'),
+(339, 105, 'Sanirah', '2022-07-23', '6000.00', 'bukti_600068.jpeg', 'sukses'),
+(340, 105, 'Sanirah', '2022-07-24', '6000.00', 'bukti_600069.jpeg', 'sukses'),
+(341, 105, 'Sanirah', '2022-07-25', '6000.00', 'bukti_600070.jpeg', 'sukses'),
+(342, 106, 'Dede', '2022-07-20', '10000.00', 'bukti_600071.jpeg', 'cancel'),
+(343, 106, 'Dede', '2022-07-20', '10000.00', 'bukti_1000090.jpeg', 'sukses'),
+(344, 106, 'Dede', '2022-07-21', '10000.00', 'bukti_1000091.jpeg', 'sukses'),
+(345, 106, 'Dede', '2022-07-22', '10000.00', 'bukti_1000092.jpeg', 'sukses'),
+(346, 106, 'Dede', '2022-07-23', '10000.00', 'bukti_1000093.jpeg', 'sukses'),
+(347, 106, 'Dede', '2022-07-24', '10000.00', 'bukti_1000094.jpeg', 'sukses'),
+(348, 106, 'Dede', '2022-07-25', '10000.00', 'bukti_1000095.jpeg', 'sukses'),
+(349, 112, 'Diana', '2022-07-24', '35000.00', 'bukti_35rb11.jpeg', 'sukses'),
+(350, 113, 'Asri', '2022-07-22', '5000.00', 'bukti_35rb12.jpeg', 'cancel'),
+(351, 113, 'Asri', '2022-07-22', '5000.00', 'bukti_5rb27.jpeg', 'sukses'),
+(352, 113, 'Asri', '2022-07-23', '5000.00', 'bukti_5rb28.jpeg', 'sukses'),
+(353, 113, 'Asri', '2022-07-24', '5000.00', 'bukti_5rb29.jpeg', 'sukses'),
+(354, 113, 'Asri', '2022-07-25', '5000.00', 'bukti_5rb30.jpeg', 'sukses'),
+(355, 105, 'Sanirah', '2022-07-26', '6000.00', 'bukti_600065.jpeg', 'sukses'),
+(356, 105, 'Sanirah', '2022-07-27', '6000.00', 'bukti_600066.jpeg', 'sukses'),
+(357, 105, 'Sanirah', '2022-07-28', '6000.00', 'bukti_600067.jpeg', 'sukses'),
+(358, 105, 'Sanirah', '2022-07-29', '6000.00', 'bukti_600068.jpeg', 'sukses'),
+(359, 105, 'Sanirah', '2022-07-30', '6000.00', 'bukti_600069.jpeg', 'sukses'),
+(360, 105, 'Sanirah', '2022-07-31', '6000.00', 'bukti_600070.jpeg', 'sukses'),
+(361, 106, 'Dede', '2022-07-26', '10000.00', 'bukti_1000090.jpeg', 'sukses'),
+(362, 106, 'Dede', '2022-07-27', '10000.00', 'bukti_1000091.jpeg', 'sukses'),
+(363, 106, 'Dede', '2022-07-28', '10000.00', 'bukti_1000092.jpeg', 'sukses'),
+(364, 106, 'Dede', '2022-07-29', '10000.00', 'bukti_1000093.jpeg', 'sukses'),
+(365, 106, 'Dede', '2022-07-30', '10000.00', 'bukti_1000094.jpeg', 'sukses'),
+(366, 106, 'Dede', '2022-07-31', '10000.00', 'bukti_1000095.jpeg', 'sukses'),
+(367, 111, 'Juju', '2022-07-21', '10000.00', 'bukti_1000096.jpeg', 'sukses'),
+(368, 111, 'Juju', '2022-07-22', '10000.00', 'bukti_1000097.jpeg', 'sukses'),
+(369, 111, 'Juju', '2022-07-23', '10000.00', 'bukti_1000098.jpeg', 'sukses'),
+(370, 111, 'Juju', '2022-07-24', '10000.00', 'bukti_1000099.jpeg', 'sukses'),
+(371, 111, 'Juju', '2022-07-31', '70000.00', 'bukti_704.jpeg', 'sukses'),
+(372, 112, 'Diana', '2022-07-31', '35000.00', 'bukti_35rb11.jpeg', 'sukses'),
+(373, 113, 'Asri', '2022-07-26', '5000.00', 'bukti_5rb24.jpeg', 'sukses'),
+(374, 113, 'Asri', '2022-07-27', '5000.00', 'bukti_5rb25.jpeg', 'sukses'),
+(375, 113, 'Asri', '2022-07-28', '5000.00', 'bukti_5rb26.jpeg', 'sukses'),
+(376, 113, 'Asri', '2022-07-29', '5000.00', 'bukti_5rb27.jpeg', 'sukses'),
+(377, 113, 'Asri', '2022-07-30', '5000.00', 'bukti_5rb28.jpeg', 'sukses'),
+(378, 113, 'Asri', '2022-07-31', '5000.00', 'bukti_5rb29.jpeg', 'sukses'),
+(379, 114, 'Nina', '2022-07-22', '7000.00', 'bukti_7rb33.jpeg', 'sukses'),
+(380, 114, 'Nina', '2022-07-23', '7000.00', 'bukti_7rb34.jpeg', 'sukses'),
+(381, 114, 'Nina', '2022-07-24', '7000.00', 'bukti_7rb35.jpeg', 'sukses'),
+(382, 114, 'Nina', '2022-07-31', '49000.00', 'bukti_49rb5.jpeg', 'sukses'),
+(383, 105, 'Sanirah', '2022-08-01', '6000.00', 'bukti_600065.jpeg', 'sukses'),
+(384, 105, 'Sanirah', '2022-08-02', '6000.00', 'bukti_600066.jpeg', 'sukses'),
+(385, 105, 'Sanirah', '2022-08-03', '6000.00', 'bukti_600067.jpeg', 'sukses'),
+(386, 105, 'Sanirah', '2022-08-04', '6000.00', 'bukti_600068.jpeg', 'sukses'),
+(387, 105, 'Sanirah', '2022-08-05', '6000.00', 'bukti_600069.jpeg', 'sukses'),
+(388, 105, 'Sanirah', '2022-08-06', '6000.00', 'bukti_600070.jpeg', 'sukses'),
+(389, 105, 'Sanirah', '2022-08-07', '6000.00', 'bukti_600071.jpeg', 'sukses'),
+(390, 105, 'Sanirah', '2022-08-08', '6000.00', 'bukti_600072.jpeg', 'sukses'),
+(391, 105, 'Sanirah', '2022-08-09', '6000.00', 'bukti_600073.jpeg', 'sukses'),
+(392, 105, 'Sanirah', '2022-08-10', '6000.00', 'bukti_600074.jpeg', 'sukses'),
+(393, 106, 'Dede', '2022-08-01', '10000.00', 'bukti_1000090.jpeg', 'sukses'),
+(394, 106, 'Dede', '2022-08-02', '10000.00', 'bukti_1000091.jpeg', 'sukses'),
+(395, 106, 'Dede', '2022-08-03', '10000.00', 'bukti_1000092.jpeg', 'sukses'),
+(396, 106, 'Dede', '2022-08-04', '10000.00', 'bukti_1000093.jpeg', 'sukses'),
+(397, 106, 'Dede', '2022-08-05', '10000.00', 'bukti_1000094.jpeg', 'sukses'),
+(398, 106, 'Dede', '2022-08-06', '10000.00', 'bukti_1000095.jpeg', 'sukses'),
+(399, 106, 'Dede', '2022-08-07', '10000.00', 'bukti_1000096.jpeg', 'sukses'),
+(400, 106, 'Dede', '2022-08-08', '10000.00', 'bukti_1000097.jpeg', 'sukses'),
+(401, 106, 'Dede', '2022-08-09', '10000.00', 'bukti_1000098.jpeg', 'sukses'),
+(402, 106, 'Dede', '2022-08-10', '10000.00', 'bukti_1000099.jpeg', 'sukses'),
+(403, 106, 'Dede', '2022-08-11', '10000.00', 'buktibayar23.jpeg', 'cancel'),
+(404, 106, 'Dede', '2022-08-11', '10000.00', 'buktidede.jpeg', 'sukses'),
+(405, 106, 'Dede', '2022-08-12', '10000.00', 'buktidede1.jpeg', 'sukses'),
+(406, 111, 'Juju', '2022-08-07', '70000.00', 'bukti_704.jpeg', 'sukses'),
+(407, 111, 'Juju', '2022-08-08', '10000.00', 'buktijuju.jpeg', 'sukses'),
+(408, 111, 'Juju', '2022-08-09', '10000.00', 'buktijuju1.jpeg', 'sukses'),
+(409, 111, 'Juju', '2022-08-10', '10000.00', 'buktijuju2.jpeg', 'sukses'),
+(410, 111, 'Juju', '2022-08-11', '10000.00', 'buktijuju3.jpeg', 'sukses'),
+(411, 111, 'Juju', '2022-08-12', '10000.00', 'buktijuju4.jpeg', 'sukses'),
+(412, 112, 'Diana', '2022-08-07', '35000.00', 'bukti_35rb11.jpeg', 'sukses'),
+(413, 112, 'Diana', '2022-08-08', '5000.00', 'bukti_5rb24.jpeg', 'sukses'),
+(414, 112, 'Diana', '2022-08-09', '5000.00', 'bukti_5rb25.jpeg', 'sukses'),
+(415, 112, 'Diana', '2022-08-10', '5000.00', 'bukti_5rb26.jpeg', 'sukses'),
+(416, 112, 'Diana', '2022-08-11', '5000.00', 'bukti_5rb27.jpeg', 'sukses'),
+(417, 112, 'Diana', '2022-08-12', '5000.00', 'bukti_7rb33.jpeg', 'cancel'),
+(418, 112, 'Diana', '2022-08-12', '5000.00', 'bukti_5rb28.jpeg', 'sukses'),
+(419, 113, 'Asri', '2022-08-01', '5000.00', 'bukti_5rb29.jpeg', 'sukses'),
+(420, 113, 'Asri', '2022-08-02', '5000.00', 'bukti_5rb30.jpeg', 'sukses'),
+(421, 113, 'Asri', '2022-08-03', '5000.00', 'bukti_5rb31.jpeg', 'sukses'),
+(422, 113, 'Asri', '2022-08-04', '5000.00', 'bukti_5rb32.jpeg', 'sukses'),
+(423, 113, 'Asri', '2022-08-05', '5000.00', 'bukti_5rb33.jpeg', 'sukses'),
+(424, 113, 'Asri', '2022-08-06', '5000.00', 'bukti_5rb34.jpeg', 'sukses'),
+(425, 113, 'Asri', '2022-08-07', '5000.00', 'bukti_5rb35.jpeg', 'sukses'),
+(426, 113, 'Asri', '2022-08-08', '5000.00', 'bukti_5rb36.jpeg', 'sukses'),
+(427, 113, 'Asri', '2022-08-09', '5000.00', 'bukti_5rb37.jpeg', 'sukses'),
+(428, 113, 'Asri', '2022-08-10', '5000.00', 'bukti_5rb38.jpeg', 'sukses'),
+(429, 113, 'Asri', '2022-08-11', '5000.00', 'bukti_5rb39.jpeg', 'sukses'),
+(430, 113, 'Asri', '2022-08-12', '5000.00', 'bukti_5rb40.jpeg', 'sukses'),
+(431, 114, 'Nina', '2022-08-07', '49000.00', 'bukti_49rb5.jpeg', 'sukses'),
+(432, 114, 'Nina', '2022-08-08', '7000.00', 'bukti_7rb34.jpeg', 'sukses'),
+(433, 114, 'Nina', '2022-08-09', '7000.00', 'bukti_7rb35.jpeg', 'sukses'),
+(434, 114, 'Nina', '2022-08-10', '7000.00', 'bukti_7rb36.jpeg', 'sukses'),
+(435, 114, 'Nina', '2022-08-11', '7000.00', 'bukti_7rb37.jpeg', 'sukses');
 
 -- --------------------------------------------------------
 
@@ -394,10 +495,12 @@ INSERT INTO `pembayaran` (`id`, `id_user`, `nama_lengkap`, `tanggal`, `nominal`,
 --
 
 CREATE TABLE `pembayaran_bulanan` (
-  `id` int(11) NOT NULL,
+  `id_bayar` int(11) NOT NULL,
   `id_petugas` int(11) NOT NULL,
   `nama_lengkap` varchar(225) NOT NULL,
-  `tanggal` date NOT NULL,
+  `tanggal_awal_periode` date DEFAULT NULL,
+  `tanggal_akhir_periode` date DEFAULT NULL,
+  `tanggal_bayar` date NOT NULL,
   `nominal` int(11) NOT NULL,
   `bukti` varchar(225) NOT NULL,
   `status` varchar(100) NOT NULL
@@ -407,9 +510,9 @@ CREATE TABLE `pembayaran_bulanan` (
 -- Dumping data for table `pembayaran_bulanan`
 --
 
-INSERT INTO `pembayaran_bulanan` (`id`, `id_petugas`, `nama_lengkap`, `tanggal`, `nominal`, `bukti`, `status`) VALUES
-(36, 18, 'Kokom', '2022-07-20', 300000, 'bukti15.jpg', 'sukses'),
-(41, 18, 'Kokom', '2022-06-15', 1135000, 'Sertif_VSGA4.jpg', 'sukses');
+INSERT INTO `pembayaran_bulanan` (`id_bayar`, `id_petugas`, `nama_lengkap`, `tanggal_awal_periode`, `tanggal_akhir_periode`, `tanggal_bayar`, `nominal`, `bukti`, `status`) VALUES
+(45, 18, 'Kokom', '2022-05-15', '2022-05-20', '2022-05-21', 233000, 'Screenshot_(115).png', 'sukses'),
+(46, 29, 'Surnani', '2022-05-15', '2022-05-20', '2022-05-20', 25900, 'Screenshot_(6).png', 'sukses');
 
 -- --------------------------------------------------------
 
@@ -434,7 +537,7 @@ CREATE TABLE `penyelenggara` (
 --
 
 INSERT INTO `penyelenggara` (`id`, `nama_lengkap`, `alamat`, `no_hp`, `username`, `image`, `password`, `tanggal_mulai`, `tanggal_selesai`) VALUES
-(0, 'Imas', 'Jl. Rawa Bebek RT02/01 No.108', '6285890006338', 'penyelenggara123', 'avatar3.png', '$2y$10$gG1nIjN3m9MSiA3twQbr0u0til0mxcnY6AMF3VHyeXlgbG7QovTmG', '2022-05-15', '2023-03-16');
+(1, 'Imas', 'Jl. Rawa Bebek RT02/01 No.108', '6285890006338', 'penyelenggara123', 'avatar3.png', '$2y$10$gG1nIjN3m9MSiA3twQbr0u0til0mxcnY6AMF3VHyeXlgbG7QovTmG', '2022-05-15', '2023-03-16');
 
 -- --------------------------------------------------------
 
@@ -460,16 +563,12 @@ CREATE TABLE `petugas` (
 --
 
 INSERT INTO `petugas` (`id`, `nama_lengkap`, `alamat`, `no_hp`, `username`, `image`, `password`, `status`, `id_penyelenggara`, `created_at`) VALUES
-(18, 'Kokom', 'Jl. Rawa Bebek RT02/01 No.17', '6282284284815', 'kokom', 'default.png', '$2y$10$LVGLMm7cvS/iBC0F2Q0elu9sGG1IIMd4jsCcqDczcRXjrp9EOxR1.', 'aktif', 0, NULL),
-(29, 'Surnani', 'Jl. Penggilingan No.12', '6282284284815', 'surnani', 'default.png', '$2y$10$HUo6IcKId.qOfD3cBS2NlOOqvLB8VeHBPWCveFZ32brKPJrSqoi/S', 'aktif', 0, NULL),
-(30, 'Supriyati', 'Jl. Rawa Bebek RT02/01 No.46', '6282284284815', '', 'default.png', '', 'nonaktif', 0, NULL),
-(31, 'Muti', 'Jl. Rawa Bebek RT10/01 No.78', '6282284284815', '', 'default.png', '', 'nonaktif', 0, NULL),
-(32, 'Yeni', 'Jl. Rawa Bebek RT03/01 No.90', '6282284284815', '', 'default.png', '', 'nonaktif', 0, NULL),
-(33, 'Wiwit', 'Jl. Kepisangan RT07/04 No. 67', '6282284284815', '', 'default.png', '', 'nonaktif', 0, NULL),
-(34, 'Yayan', 'Jl. Rawa Bebek RT11/01 No.43', '6282284284815', '', 'default.png', '', 'nonaktif', 0, NULL),
-(35, 'Misih', 'Jl. Rawa Bebek RT02/01 No.18', '6282284284815', '', 'default.png', '', 'nonaktif', 0, NULL),
-(36, 'Novi', 'Jl. Penggilingan RT08/02 No.28', '6282284284815', '', 'default.png', '', 'nonaktif', 0, NULL),
-(37, 'Warni', 'Jl. Rawa Bebek RT04/10 No.48', '6282284284815', '', 'default.png', '', 'nonaktif', 0, NULL);
+(18, 'Kokom', 'Jl. Rawa Bebek RT02/01 No.17', '6282284284815', 'kokom', 'default.png', '$2y$10$gG1nIjN3m9MSiA3twQbr0u0til0mxcnY6AMF3VHyeXlgbG7QovTmG', 'aktif', 1, NULL),
+(29, 'Surnani', 'Jl. Penggilingan No.12', '6282284284815', 'surnani', 'default.png', '$2y$10$HUo6IcKId.qOfD3cBS2NlOOqvLB8VeHBPWCveFZ32brKPJrSqoi/S', 'aktif', 1, NULL),
+(30, 'Supriyati', 'Jl. Rawa Bebek RT02/01 No.46', '6282284284815', '', 'default.png', '', 'nonaktif', 1, NULL),
+(34, 'Yayan', 'Jl. Rawa Bebek RT11/01 No.43', '6282284284815', '', 'default.png', '', 'nonaktif', 1, NULL),
+(35, 'Misih', 'Jl. Rawa Bebek RT02/01 No.18', '6282284284815', '', 'default.png', '', 'nonaktif', 1, NULL),
+(36, 'Novi', 'Jl. Penggilingan RT08/02 No.28', '6282284284815', 'novi', 'default.png', '$2y$10$jJLbqyo4iLVcW.w5ySloLuGR.LJkegQQMbn.Luf7w5mSAHkdJqiJq', 'aktif', 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -560,8 +659,11 @@ INSERT INTO `target_barang` (`id_target_barang`, `id_user`, `id_barang`) VALUES
 (168, 115, 34),
 (169, 115, 37),
 (170, 115, 45),
-(174, 117, 1),
-(175, 119, 1);
+(171, 117, 1),
+(172, 117, 5),
+(173, 117, 7),
+(174, 117, 17),
+(175, 117, 19);
 
 -- --------------------------------------------------------
 
@@ -591,15 +693,16 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`id`, `nama_lengkap`, `alamat`, `no_hp`, `username`, `image`, `password`, `status`, `tabungan`, `nama_petugas`, `id_petugas`, `created_at`) VALUES
 (105, 'Sanirah', 'Jl. Rawa Bebek RT02/01 No.110', '6282284284815', 'Sanirah', 'default.png', '$2y$10$lyEJ0nvRrozKr4/lVFyI8.drDawQXYeF5McAIzVswiC8tZ.mjbxuO', 'aktif', '1600', 'Kokom', 18, '2022-07-17 17:00:00'),
 (106, 'Dede', 'Jl. Rawa Bebek RT02/01 No. 89', '6282284284815', 'Dede', 'default.png', '$2y$10$kj.T29wNlH6kKYQjH2RaE.I98hENvDM7WqHmfzpBckSxRSalFplR.', 'aktif', '7350', 'Kokom', 18, '2022-07-17 19:30:23'),
-(111, 'Juju', 'Jl. Rawa Bebek RT02/01 No.40', '6282284284815', 'Juju', 'default.png', '$2y$10$KuS2ZDU0EE32.VcceFpJvOQDe87Jt4t6Bvsv5WXa3pmcbXOfMqwO.', 'aktif', '4100', 'Kokom', 18, '2022-07-18 18:00:00'),
+(111, 'Juju', 'Jl. Rawa Bebek RT02/01 No.40', '6282284284815', 'Juju', 'default.png', '$2y$10$QuAxGJyCq/wiSXZhuzyibOr7hGyQC6ku25iFR2TNoW/pR0mAmssFK', 'aktif', '4100', 'Kokom', 18, '2022-07-18 18:00:00'),
 (112, 'Diana', 'Jl. Rawa Bebek RT02/01 No.67', '6282284284815', 'Diana', 'default.png', '$2y$10$qoQ8vb41DyWSqxSll17VJutsVdhPWu6BtBDJcDBQoP7p/zSqcc1tq', 'aktif', '2000', 'Kokom', 18, '2022-07-18 19:20:30'),
-(113, 'Asri', 'Jl. Rawa Bebek RT03/01 No.76', '6282284284815', 'Asri', 'default.png', '$2y$10$DUUfFhxszntEL27SXb8MEehcetTF7ItL0KftyuAHiH0RUIeDsdWGu', 'aktif', '2800', 'Kokom', 18, '2022-07-19 19:30:54'),
-(114, 'Nina', 'Jl. Rawa Bebek RT02/01 No.29', '6282284284815', 'Nina', 'default.png', '$2y$10$cp9/fmlrl8gLBUJ9P7sPDOtT/hTPEhSwEESaBo7MP0HpByubAC.Pm', 'aktif', '3300', 'Kokom', 18, '2022-07-19 20:30:32'),
-(115, 'Melan', 'Jl. Penggilingan No.78', '6282284284815', 'Melan', 'default.png', '$2y$10$E6u3Dq5/.Wdr2bjz/4QBC.TYTdsBryfOMNSfWdzpqJrfP47W/PyGq', 'aktif', NULL, 'Surnani', 29, '2022-07-20 21:30:12'),
-(117, 'coba', 'kuningan', '6282284284815', 'coba', 'default.png', '$2y$10$wXTCXWS2Cp4n7tT0O8kLDe36GPCln7q1cpHQdBYCeLyrR.rjy2J3m', 'aktif', '1000', 'Kokom', 18, '2022-07-25 18:30:34'),
-(119, 'idham', 'jakarta', '6285603306', 'idham', 'default.png', '$2y$10$lyEJ0nvRrozKr4/lVFyI8.drDawQXYeF5McAIzVswiC8tZ.mjbxuO', 'aktif', NULL, 'Kokom', 18, '2022-07-26 17:03:27'),
-(121, 'coba', 'coba', '085603306568', 'coba', 'default.png', '$2y$10$LzQFNnpy5eGx.pyZ7r8QDueDyFlT.ppJuXVylyRA3qnZQa11OkD8C', 'aktif', NULL, 'Kokom', 18, '2022-07-29 00:45:35'),
-(122, 'coba', 'coba', '6282123405037', 'coba', 'default.png', '$2y$10$MRUcTkoaIc18sQNbUJU6be8KsURHD0QMi8eXynH9vZkB.7J63z66u', 'aktif', NULL, 'Kokom', 18, '2022-07-29 00:52:15');
+(113, 'Asri', 'Jl. Rawa Bebek RT03/01 No.76', '6282284284815', 'Asri', 'default.png', '$2y$10$Ik0bx30fqA1cA4vtvCq8buiFygs59nB5KhLd7ocZoaw/7/N12V.1q', 'aktif', '2800', 'Kokom', 18, '2022-07-19 19:30:54'),
+(114, 'Nina', 'Jl. Rawa Bebek RT02/01 No.29', '6282284284815', 'Nina', 'default.png', '$2y$10$/09.dSTuZ.SKd/7PQUABHOyYCkpvh3pExzujKUkcPeRsitSwHnp5a', 'aktif', '3300', 'Kokom', 18, '2022-07-19 20:30:32'),
+(115, 'Melan', 'Jl. Penggilingan No.78', '6282284284815', 'Melan', 'default.png', '$2y$10$ntOq88UoJWly0j860TziJuTO1ZoUnZXEUKZZ.KIqraOLOLXzVHB2y', 'aktif', NULL, 'Surnani', 29, '2022-07-20 21:30:12'),
+(117, 'Dewi', 'Jl. Penggilingan No.80', '6282284284815', 'Dewi', 'default.png', '$2y$10$4vVH2A7/5slMYQfah1VtEeDT8Emas/QFvh.2zpKx0mzbOA6WvtVXC', 'aktif', '1700', 'Surnani', 29, '2022-07-25 11:59:08'),
+(118, 'Chaniya', 'Jl. Penggilingan No.112', '6282284284815', 'chaniya', 'default.png', '', 'aktif', NULL, 'Surnani', 29, '2022-07-25 15:43:04'),
+(119, 'Ghea', 'Jl. Penggilingan No.99', '6282284284815', '', 'default.png', '', 'nonaktif', NULL, 'Surnani', 29, '2022-07-29 01:08:52'),
+(120, 'Reni', 'Jl. Penggilingan RT08/02 No.49', '082284284815', '', 'default.png', '', 'nonaktif', NULL, 'Novi', 36, '2022-08-11 01:14:56'),
+(121, 'Aca', 'Jl. Penggilingan No.65', '6282284284815', '', 'default.png', '', 'nonaktif', NULL, 'Surnani', 29, '2022-08-11 01:17:11');
 
 --
 -- Indexes for dumped tables
@@ -621,7 +724,7 @@ ALTER TABLE `pembayaran`
 -- Indexes for table `pembayaran_bulanan`
 --
 ALTER TABLE `pembayaran_bulanan`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id_bayar`);
 
 --
 -- Indexes for table `penyelenggara`
@@ -661,13 +764,13 @@ ALTER TABLE `barang`
 -- AUTO_INCREMENT for table `pembayaran`
 --
 ALTER TABLE `pembayaran`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=338;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=436;
 
 --
 -- AUTO_INCREMENT for table `pembayaran_bulanan`
 --
 ALTER TABLE `pembayaran_bulanan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id_bayar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT for table `penyelenggara`
@@ -679,7 +782,7 @@ ALTER TABLE `penyelenggara`
 -- AUTO_INCREMENT for table `petugas`
 --
 ALTER TABLE `petugas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT for table `target_barang`
@@ -691,7 +794,7 @@ ALTER TABLE `target_barang`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=123;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=122;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

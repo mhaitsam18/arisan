@@ -24,11 +24,11 @@ class M_Petugas extends CI_Model
         $this->db->select('*, pembayaran.nama_lengkap AS nama_peserta, pembayaran.nominal AS nominal_peserta, pembayaran.bukti AS bukti_peserta, pembayaran.status AS status_peserta, pembayaran.id AS id_pembayaran');
         $this->db->from('pembayaran');
         $this->db->join('user', 'user.id = pembayaran.id_user', 'left');
-        $this->db->join('pembayaran_bulanan', 'user.id_petugas = pembayaran_bulanan.id_petugas', 'left');
+        // $this->db->join('pembayaran_bulanan', 'user.id_petugas = pembayaran_bulanan.id_petugas', 'left');
         $this->db->where('pembayaran.status', 'sukses');
         $this->db->where('user.id_petugas', $this->session->userdata('id'));
-        $tgl = 'MAX(pembayaran.tanggal)';
-        $this->db->where('tanggal >=', $tgl);
+        // $tgl = 'MAX(pembayaran.tanggal)';
+        // $this->db->where('tanggal >=', $tgl);
         $this->db->order_by('tanggal', 'ASC');
         return $this->db->get();
     }
@@ -65,6 +65,7 @@ class M_Petugas extends CI_Model
         $status = "pembayaran.status='cancel'";
         $this->db->select('*');
         $this->db->from('pembayaran');
+        $this->db->join('user', 'user.id = pembayaran.id_user', 'left');
         $this->db->join('user', 'user.id = pembayaran.id_user', 'left');
         $this->db->where($status);
         $this->db->where('id_petugas', $this->session->userdata('id'));

@@ -29,7 +29,7 @@
                                             <div class=" row mb-3">
                                                 <label for="tanggal" class="col-sm-3 col-form-label">Tanggal Pembayaran</label>
                                                 <div class="col-sm-9">
-                                                    <input type="date" class="form-control" id="tanggal" autocomplete="off" name="tanggal">
+                                                    <input type="date" class="form-control" id="tanggal" autocomplete="off" name="tanggal" min="<?= $penyelenggara->tanggal_mulai; ?>" max="<?= $penyelenggara->tanggal_selesai; ?>">
                                                     <?= form_error('tanggal', '<small class="text-danger pl-3">', '</small>'); ?>
                                                 </div>
                                             </div>

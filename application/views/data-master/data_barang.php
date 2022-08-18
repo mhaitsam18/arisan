@@ -71,7 +71,6 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <?= $this->session->flashdata('message'); ?>
                     <h5 class="modal-title" id="exampleModalLabel">Tambah Data Barang</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
@@ -81,6 +80,7 @@
                             <div class="col-sm-12">
                                 <label for="" class="col-sm-12 col-form-label">Gambar Barang</label>
                                 <input type="file" class="form-control" id="" name="gambar" required oninvalid="this.setCustomValidity('Masukan Gambar Barang')" oninput="setCustomValidity('')">
+                                <small class="text-muted">*gif/jpg/png/jpeg</small>
                                 <?= form_error('current_password', '<small class="text-danger pl-3">', '</small>'); ?>
                             </div>
                         </div>
@@ -101,7 +101,10 @@
                         <div class="row mb-3">
                             <div class="col-sm-12">
                                 <label for="" class="col-sm-12 col-form-label">Harga Per Volume</label>
-                                <input type="number" min="1" class="form-control" id="" name="harga" required oninvalid="this.setCustomValidity('Masukan Harga Per Volume')" oninput="setCustomValidity('')">
+                                <input type="number" class="form-control" id="nominal" name="harga" required oninvalid="this.setCustomValidity('Masukan Harga Per Volume')" oninput="setCustomValidity('')" onkeyup="validasi()">
+                                <small class="text-muted">*minimal Rp.200</small>
+                                <!-- <input type="text" id="jumlah" value="0">
+                                <input type="text" id="total" value="0"> -->
                                 <?= form_error('harga', '<small class="text-danger pl-3">', '</small>'); ?>
                             </div>
                         </div>
@@ -113,7 +116,7 @@
                             </div>
                         </div> -->
                         <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Batal</button>
-                        <button type="submit" class="btn btn-success btn-sm">Simpan</button>
+                        <button type="submit" class="btn btn-success btn-sm" id="btnSimpan" disabled="true">Simpan</button>
                     </form>
                 </div>
             </div>
@@ -144,3 +147,16 @@
             </div>
         </div>
     <?php endforeach; ?>
+
+    <script type="text/javascript" s>
+        function validasi() {
+            var nominal = document.getElementById('nominal').value;
+            var btnSimpan = document.getElementById('btnSimpan');
+
+            if (nominal >= 200) {
+                btnSimpan.removeAttribute('disabled');
+            } else {
+                btnSimpan.disabled = 'true';
+            }
+        }
+    </script>

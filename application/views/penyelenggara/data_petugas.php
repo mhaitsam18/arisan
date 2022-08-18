@@ -23,7 +23,7 @@
                                     <th>Alamat</th>
                                     <th>No HP</th>
                                     <th>Jumlah Peserta</th>
-                                    <th>Jumlah Bayar</th>
+                                    <!-- <th>Jumlah Bayar</th> -->
                                     <th>Status</th>
                                     <th>Aksi</th>
                                 </tr>
@@ -33,6 +33,7 @@
                                 $count = 0;
                                 foreach ($rows as $row) :
                                     $count = $count + 1;
+                                    // $this->db->query("SUM(pembayaran_bulanan.nominal) as total_bayar");
                                 ?>
                                     <?php if ($row->status == 'nonaktif') : ?>
                                         <tr style="background-color: #fa8e8e;">
@@ -43,8 +44,8 @@
                                         <td><?= $row->nama_lengkap ?></td>
                                         <td><?= $row->alamat ?></td>
                                         <td><?= $row->no_hp ?></td>
-                                        <td><?= $row->jumlah_peserta ?> Peserta</td>
-                                        <td><?= number_format($row->total_bayar, 0, ',', '.') ?></td>
+                                        <td><?= $row->jumlah_peserta; ?> Peserta</td>
+                                        <!-- <td><?= number_format($row->jumlah_bayar, 0, ',', '.') ?></td> -->
                                         <td><?= $row->status ?></td>
                                         <td>
                                             <?php if ($row->status == 'aktif') : ?>
@@ -79,6 +80,7 @@
                         <div class="mb-3">
                             <label for="nama_lengkap" class="form-label">Nama</label>
                             <input type="text" class="form-control" id="nama_lengkap" name="nama_lengkap" autocomplete="off" required oninvalid="this.setCustomValidity('Masukan Nama Lengkap')" oninput="setCustomValidity('')">
+                            <input type="hidden" class="form-control" id="id_penyelenggara" name="id_penyelenggara" autocomplete="off" value="<?= $user['id']; ?>">
                         </div>
                         <div class="mb-3">
                             <label for="alamat" class="form-label">Alamat</label>
