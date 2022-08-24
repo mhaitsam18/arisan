@@ -29,7 +29,7 @@
             <tr>
                 <td><?= $no++; ?></td>
                 <td><?= $row->nama_lengkap; ?></td>
-                <td><?= $row->tanggal; ?></td>
+                <td><?= $row->tanggal_bayar; ?></td>
                 <td>Rp.<?= number_format($row->nominal, 0, ',', '.'); ?></td>
             </tr>
         <?php

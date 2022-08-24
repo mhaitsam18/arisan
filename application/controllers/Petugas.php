@@ -143,7 +143,7 @@ class Petugas extends CI_Controller
         // $data['id_petugas'] = $this->session->userdata('id');
         $data['tgl_awal'] = $this->input->post('tgl_awal');
         $data['tgl_akhir'] = $this->input->post('tgl_akhir');
-        $data['tgl_max'] = $this->db->query("SELECT MAX(tanggal_akhir_periode) as tgl_max FROM pembayaran_bulanan WHERE id_petugas = $id_petugas")->row();
+        $data['tgl_max'] = $this->db->query("SELECT MAX(tanggal_akhir_periode) as tgl_max FROM pembayaran_bulanan WHERE id_petugas = $id_petugas AND status = 'sukses'")->row();
 
         $this->db->order_by('tanggal', 'DESC');
 
