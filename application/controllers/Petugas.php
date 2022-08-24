@@ -430,7 +430,10 @@ class Petugas extends CI_Controller
         $total = 0;
 
         $this->db->order_by('tanggal', 'DESC');
-        $pembayaran = $this->db->get_where('pembayaran', ['id_user' => $this->input->get('id_peserta')])->row();
+        $pembayaran = $this->db->get_where('pembayaran', [
+            'id_user' => $this->input->get('id_peserta'),
+            'status !=' => "cancel"
+        ])->row();
 
         $user = $this->db->get_where('petugas', ['username' => $this->session->userdata('username')])->row_array();
 
@@ -438,7 +441,7 @@ class Petugas extends CI_Controller
 
         if ($pembayaran) {
             // $tanggal_minimal = date('Y-m-d', strtotime('-1 days', strtotime($pembayaran->tanggal)));
-            $tanggal_minimal = $pembayaran->tanggal;
+            $tanggal_minimal = date('Y-m-d', strtotime('+1 days', strtotime($pembayaran->tanggal)));
         } else {
             $tanggal_minimal = $penyelenggara->tanggal_mulai;
         }
