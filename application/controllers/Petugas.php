@@ -45,7 +45,7 @@ class Petugas extends CI_Controller
         $this->db->group_by('user.id');
         $data['rows'] = $this->db->get_where('user', [
             'id_petugas' => $this->session->userdata('id'),
-            // 'pembayaran.status !=' => 'cancel'
+            'pembayaran.status !=' => 'cancel'
         ])->result();
         // $data['rows'] = $this->M_Petugas->getDataPeserta()->result();
         $data['penyelenggara'] = $this->db->get('penyelenggara')->row();
@@ -432,7 +432,8 @@ class Petugas extends CI_Controller
         $this->db->order_by('tanggal', 'DESC');
         $pembayaran = $this->db->get_where('pembayaran', [
             'id_user' => $this->input->get('id_peserta'),
-            'status !=' => "cancel"
+            'status !=' => "cancel",
+            'tanggal !=' => null
         ])->row();
 
         $user = $this->db->get_where('petugas', ['username' => $this->session->userdata('username')])->row_array();
@@ -661,6 +662,15 @@ class Petugas extends CI_Controller
 
         $this->db->insert('user', $data);
         $id_user = $this->db->insert_id();
+
+        $this->db->insert('pembayaran', [
+            'id_user' => $id_user,
+            'nama_lengkap' => $this->input->post('nama_lengkap', true),
+            'tanggal' => NULL,
+            'nominal' => 0,
+            'bukti' => null,
+            'status' => "sukses",
+        ]);
         foreach ($this->input->post('id_barang') as $row => $value) {
             $this->db->insert('target_barang', [
                 'id_user' => $id_user,

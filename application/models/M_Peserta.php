@@ -33,6 +33,7 @@ class M_Peserta extends CI_Model
         $this->db->from('pembayaran');
         $this->db->join('user', 'user.nama_lengkap = pembayaran.nama_lengkap', 'left');
         $this->db->where('username', $this->session->userdata('username'));
+        $this->db->where('tanggal !=', null);
         // $this->db->where('pembayaran.status', 'proses');
         // $this->db->where('pembayaran.status', 'sukses');
         $this->db->where_in('pembayaran.status', array('proses', 'sukses'));
