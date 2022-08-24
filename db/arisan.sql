@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 18, 2022 at 06:15 AM
+-- Generation Time: Aug 24, 2022 at 04:57 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -512,7 +512,8 @@ CREATE TABLE `pembayaran_bulanan` (
 
 INSERT INTO `pembayaran_bulanan` (`id_bayar`, `id_petugas`, `nama_lengkap`, `tanggal_awal_periode`, `tanggal_akhir_periode`, `tanggal_bayar`, `nominal`, `bukti`, `status`) VALUES
 (45, 18, 'Kokom', '2022-05-15', '2022-05-20', '2022-05-21', 233000, 'Screenshot_(115).png', 'sukses'),
-(46, 29, 'Surnani', '2022-05-15', '2022-05-20', '2022-05-20', 25900, 'Screenshot_(6).png', 'sukses');
+(46, 29, 'Surnani', '2022-05-15', '2022-05-20', '2022-05-20', 25900, 'Screenshot_(6).png', 'sukses'),
+(47, 18, 'Kokom', '2022-05-21', '2022-05-25', '2022-05-26', 225000, 'Screenshot_(8).png', 'cancel');
 
 -- --------------------------------------------------------
 
@@ -663,7 +664,8 @@ INSERT INTO `target_barang` (`id_target_barang`, `id_user`, `id_barang`) VALUES
 (172, 117, 5),
 (173, 117, 7),
 (174, 117, 17),
-(175, 117, 19);
+(175, 117, 19),
+(180, 122, 14);
 
 -- --------------------------------------------------------
 
@@ -702,7 +704,8 @@ INSERT INTO `user` (`id`, `nama_lengkap`, `alamat`, `no_hp`, `username`, `image`
 (118, 'Chaniya', 'Jl. Penggilingan No.112', '6282284284815', 'chaniya', 'default.png', '', 'aktif', NULL, 'Surnani', 29, '2022-07-25 15:43:04'),
 (119, 'Ghea', 'Jl. Penggilingan No.99', '6282284284815', '', 'default.png', '', 'nonaktif', NULL, 'Surnani', 29, '2022-07-29 01:08:52'),
 (120, 'Reni', 'Jl. Penggilingan RT08/02 No.49', '082284284815', '', 'default.png', '', 'nonaktif', NULL, 'Novi', 36, '2022-08-11 01:14:56'),
-(121, 'Aca', 'Jl. Penggilingan No.65', '6282284284815', '', 'default.png', '', 'nonaktif', NULL, 'Surnani', 29, '2022-08-11 01:17:11');
+(121, 'Aca', 'Jl. Penggilingan No.65', '6282284284815', '', 'default.png', '', 'nonaktif', NULL, 'Surnani', 29, '2022-08-11 01:17:11'),
+(122, 'coba', 'coba', '6285603306568', 'coba', 'default.png', '$2y$10$ggtwyvrqSO2X0EMGwZcDbu/tDFNTkasMMcKCzXQInOpMV0eTl5ILi', 'aktif', NULL, 'Kokom', 18, '2022-08-18 23:00:19');
 
 --
 -- Indexes for dumped tables
@@ -770,7 +773,7 @@ ALTER TABLE `pembayaran`
 -- AUTO_INCREMENT for table `pembayaran_bulanan`
 --
 ALTER TABLE `pembayaran_bulanan`
-  MODIFY `id_bayar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `id_bayar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT for table `penyelenggara`
@@ -788,13 +791,13 @@ ALTER TABLE `petugas`
 -- AUTO_INCREMENT for table `target_barang`
 --
 ALTER TABLE `target_barang`
-  MODIFY `id_target_barang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=176;
+  MODIFY `id_target_barang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=181;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=122;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=123;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
