@@ -661,8 +661,13 @@ class Penyelenggara extends CI_Controller
 
                 $this->load->library('upload', $config);
                 if (!$this->upload->do_upload('gambar')) {
-                    echo 'gagal';
-                    die;
+                    $this->session->set_flashdata('message', '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        Gambar gagal diubah
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>');
+                    redirect('penyelenggara/data_barang');
+                    // echo 'gagal';
+                    // die;
                 } else {
                     $gambar = $this->upload->data('file_name');
                     $this->db->set('gambar', $gambar);

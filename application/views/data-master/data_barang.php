@@ -148,7 +148,7 @@
         </div>
     <?php endforeach; ?>
 
-    <script type="text/javascript" s>
+    <script type="text/javascript">
         function validasi() {
             var nominal = document.getElementById('nominal').value;
             var btnSimpan = document.getElementById('btnSimpan');

@@ -138,8 +138,8 @@ function getBulan($bln)
                                         <td><?= $tgl ?></td>
                                         <td>Rp.<?= number_format($row->nominal_peserta, 0, ',', '.') ?></td>
                                         <td>
-                                            <?php if ($row->bukti_peserta == 'dilakukan secara offline') : ?>
-                                                <i>dilakukan secara offline</i>
+                                            <?php if ($row->bukti_peserta == 'Diinput oleh petugas') : ?>
+                                                <i>diinput oleh petugas</i>
                                             <?php else : ?>
                                                 <a href="" data-bs-toggle="modal" data-bs-target="#exampleModal<?= $row->id_pembayaran; ?>"><?= $row->bukti_peserta ?></a>
                                             <?php endif; ?>
